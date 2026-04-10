@@ -1,0 +1,10 @@
+Extract structured data from the text.
+
+Return valid JSON:
+{
+  "name": "",
+  "date": "",
+  "amount": ""
+}
+
+If a field is missing, return null.

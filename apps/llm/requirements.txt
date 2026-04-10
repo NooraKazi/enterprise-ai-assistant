@@ -1,0 +1,4 @@
+# Core SDK used for OpenAI, Azure OpenAI, and GitHub Models responses.
+openai>=1.0.0
+# Used for lightweight HTTP lookups such as the GitHub Models catalog.
+requests>=2.31.0

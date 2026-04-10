@@ -1,0 +1,5 @@
+You are an expert summarizer.
+
+Summarize the following text in 5 bullet points:
+- Keep it concise
+- Focus on key insights

@@ -1,0 +1,460 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.41.2.15936",
+      "templateHash": "186358710972140486"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Azure region for the Azure OpenAI account."
+      }
+    },
+    "accountName": {
+      "type": "string",
+      "defaultValue": "ai-enterprise-ai-assistant",
+      "minLength": 2,
+      "maxLength": 64,
+      "metadata": {
+        "description": "Name of the Azure OpenAI account. Use a unique name if you want a fresh account instead of restoring an old one."
+      }
+    },
+    "restore": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Set to true only when the account name exists in soft-deleted state and you want to restore it."
+      }
+    },
+    "deployModel": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Controls whether a model deployment should be created together with the account. This is skipped automatically when restore=true."
+      }
+    },
+    "deploymentName": {
+      "type": "string",
+      "defaultValue": "gpt-4.1-nano",
+      "metadata": {
+        "description": "Deployment name inside the Azure OpenAI account."
+      }
+    },
+    "modelName": {
+      "type": "string",
+      "defaultValue": "gpt-4.1-nano",
+      "metadata": {
+        "description": "Azure OpenAI model name to deploy."
+      }
+    },
+    "modelVersion": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Optional model version. Leave empty to let Azure choose the default supported version in the selected region."
+      }
+    },
+    "deploymentSkuName": {
+      "type": "string",
+      "defaultValue": "GlobalStandard",
+      "metadata": {
+        "description": "Deployment SKU name. GlobalStandard is commonly used for Azure OpenAI model deployments."
+      }
+    },
+    "deploymentCapacity": {
+      "type": "int",
+      "defaultValue": 10,
+      "minValue": 1,
+      "metadata": {
+        "description": "Deployment capacity. Start small and increase only after checking regional quota."
+      }
+    },
+    "deployEmbeddingModel": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Controls whether an embedding model deployment should be created together with the account. This is skipped automatically when restore=true."
+      }
+    },
+    "embeddingDeploymentName": {
+      "type": "string",
+      "defaultValue": "text-embedding-3-small",
+      "metadata": {
+        "description": "Embedding deployment name inside the Azure OpenAI account."
+      }
+    },
+    "embeddingModelName": {
+      "type": "string",
+      "defaultValue": "text-embedding-3-small",
+      "metadata": {
+        "description": "Azure OpenAI embedding model name to deploy."
+      }
+    },
+    "embeddingModelVersion": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Optional embedding model version. Leave empty to let Azure choose the default supported version in the selected region."
+      }
+    },
+    "embeddingDeploymentSkuName": {
+      "type": "string",
+      "defaultValue": "GlobalStandard",
+      "metadata": {
+        "description": "Embedding deployment SKU name. GlobalStandard is commonly used for Azure OpenAI model deployments."
+      }
+    },
+    "embeddingDeploymentCapacity": {
+      "type": "int",
+      "defaultValue": 10,
+      "minValue": 1,
+      "metadata": {
+        "description": "Embedding deployment capacity. Start small and increase only after checking regional quota."
+      }
+    },
+    "publicNetworkAccess": {
+      "type": "string",
+      "defaultValue": "Enabled",
+      "allowedValues": [
+        "Enabled",
+        "Disabled"
+      ],
+      "metadata": {
+        "description": "Whether the account should be reachable from the public internet."
+      }
+    },
+    "disableLocalAuth": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Keep local auth enabled so API-key based clients can connect. Set to true only if you plan to use Entra-only auth."
+      }
+    },
+    "tags": {
+      "type": "object",
+      "defaultValue": {},
+      "metadata": {
+        "description": "Optional tags to apply to the account and deployment."
+      }
+    },
+    "deployDailyDeleteSchedule": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Controls whether the daily cleanup Logic App should be deployed together with the account."
+      }
+    },
+    "deleteHour": {
+      "type": "int",
+      "defaultValue": 20,
+      "minValue": 0,
+      "maxValue": 23,
+      "metadata": {
+        "description": "Hour of day to run the automatic delete job."
+      }
+    },
+    "deleteMinute": {
+      "type": "int",
+      "defaultValue": 0,
+      "minValue": 0,
+      "maxValue": 59,
+      "metadata": {
+        "description": "Minute of hour to run the automatic delete job."
+      }
+    },
+    "deleteTimeZone": {
+      "type": "string",
+      "defaultValue": "UTC",
+      "metadata": {
+        "description": "Time zone used by the automatic delete schedule."
+      }
+    }
+  },
+  "variables": {
+    "accountProperties": "[union(createObject('customSubDomainName', parameters('accountName'), 'publicNetworkAccess', parameters('publicNetworkAccess'), 'disableLocalAuth', parameters('disableLocalAuth')), if(parameters('restore'), createObject('restore', true()), createObject()))]",
+    "cleanupLogicAppName": "[format('la-delete-{0}', parameters('accountName'))]",
+    "deploymentModel": "[union(createObject('format', 'OpenAI', 'name', parameters('modelName')), if(empty(parameters('modelVersion')), createObject(), createObject('version', parameters('modelVersion'))))]",
+    "embeddingDeploymentModel": "[union(createObject('format', 'OpenAI', 'name', parameters('embeddingModelName')), if(empty(parameters('embeddingModelVersion')), createObject(), createObject('version', parameters('embeddingModelVersion'))))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2024-10-01",
+      "name": "[parameters('accountName')]",
+      "location": "[parameters('location')]",
+      "kind": "OpenAI",
+      "sku": {
+        "name": "S0"
+      },
+      "tags": "[parameters('tags')]",
+      "properties": "[variables('accountProperties')]"
+    },
+    {
+      "condition": "[and(parameters('deployModel'), not(parameters('restore')))]",
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "apiVersion": "2024-10-01",
+      "name": "[format('{0}/{1}', parameters('accountName'), parameters('deploymentName'))]",
+      "sku": {
+        "name": "[parameters('deploymentSkuName')]",
+        "capacity": "[parameters('deploymentCapacity')]"
+      },
+      "tags": "[parameters('tags')]",
+      "properties": {
+        "model": "[variables('deploymentModel')]",
+        "versionUpgradeOption": "OnceNewDefaultVersionAvailable"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName'))]"
+      ]
+    },
+    {
+      "condition": "[and(parameters('deployEmbeddingModel'), not(parameters('restore')))]",
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "apiVersion": "2024-10-01",
+      "name": "[format('{0}/{1}', parameters('accountName'), parameters('embeddingDeploymentName'))]",
+      "sku": {
+        "name": "[parameters('embeddingDeploymentSkuName')]",
+        "capacity": "[parameters('embeddingDeploymentCapacity')]"
+      },
+      "tags": "[parameters('tags')]",
+      "properties": {
+        "model": "[variables('embeddingDeploymentModel')]",
+        "versionUpgradeOption": "OnceNewDefaultVersionAvailable"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName'))]",
+        "[resourceId('Microsoft.CognitiveServices/accounts/deployments', parameters('accountName'), parameters('deploymentName'))]"
+      ]
+    },
+    {
+      "condition": "[parameters('deployDailyDeleteSchedule')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "daily-delete-schedule",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "accountName": {
+            "value": "[parameters('accountName')]"
+          },
+          "embeddingDeploymentName": "[if(and(parameters('deployEmbeddingModel'), not(parameters('restore'))), createObject('value', parameters('embeddingDeploymentName')), createObject('value', ''))]",
+          "logicAppName": {
+            "value": "[variables('cleanupLogicAppName')]"
+          },
+          "deleteHour": {
+            "value": "[parameters('deleteHour')]"
+          },
+          "deleteMinute": {
+            "value": "[parameters('deleteMinute')]"
+          },
+          "timeZone": {
+            "value": "[parameters('deleteTimeZone')]"
+          },
+          "tags": {
+            "value": "[parameters('tags')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.41.2.15936",
+              "templateHash": "5218274959527502962"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "Location for the cleanup workflow."
+              }
+            },
+            "accountName": {
+              "type": "string",
+              "defaultValue": "ai-enterprise-ai-assistant",
+              "metadata": {
+                "description": "Name of the existing Azure OpenAI account to delete on schedule."
+              }
+            },
+            "embeddingDeploymentName": {
+              "type": "string",
+              "defaultValue": "",
+              "metadata": {
+                "description": "Optional name of an existing embedding deployment to delete before the account is deleted."
+              }
+            },
+            "logicAppName": {
+              "type": "string",
+              "defaultValue": "la-delete-openai-daily",
+              "metadata": {
+                "description": "Name of the Logic App that runs the daily cleanup job."
+              }
+            },
+            "deleteHour": {
+              "type": "int",
+              "defaultValue": 20,
+              "minValue": 0,
+              "maxValue": 23,
+              "metadata": {
+                "description": "Hour of day to run the deletion job."
+              }
+            },
+            "deleteMinute": {
+              "type": "int",
+              "defaultValue": 0,
+              "minValue": 0,
+              "maxValue": 59,
+              "metadata": {
+                "description": "Minute of hour to run the deletion job."
+              }
+            },
+            "timeZone": {
+              "type": "string",
+              "defaultValue": "UTC",
+              "metadata": {
+                "description": "Time zone used by the recurrence trigger, for example UTC or Arab Standard Time."
+              }
+            },
+            "tags": {
+              "type": "object",
+              "defaultValue": {},
+              "metadata": {
+                "description": "Optional tags applied to the Logic App."
+              }
+            }
+          },
+          "variables": {
+            "workflowSchema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+            "contributorRoleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+            "accountResourceId": "[resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName'))]",
+            "embeddingDeploymentResourceId": "[if(empty(parameters('embeddingDeploymentName')), '', resourceId('Microsoft.CognitiveServices/accounts/deployments', parameters('accountName'), parameters('embeddingDeploymentName')))]",
+            "accountApiVersion": "2024-10-01",
+            "workflowActions": "[union(if(empty(parameters('embeddingDeploymentName')), createObject(), createObject('Delete_embedding_model', createObject('type', 'Http', 'inputs', createObject('method', 'DELETE', 'uri', format('{0}{1}?api-version={2}', environment().resourceManager, variables('embeddingDeploymentResourceId'), variables('accountApiVersion')), 'authentication', createObject('type', 'ManagedServiceIdentity', 'audience', environment().resourceManager)), 'runAfter', createObject()))), createObject('Delete_openai_account', createObject('type', 'Http', 'inputs', createObject('method', 'DELETE', 'uri', format('{0}{1}?api-version={2}', environment().resourceManager, variables('accountResourceId'), variables('accountApiVersion')), 'authentication', createObject('type', 'ManagedServiceIdentity', 'audience', environment().resourceManager)), 'runAfter', if(empty(parameters('embeddingDeploymentName')), createObject(), createObject('Delete_embedding_model', createArray('Succeeded', 'Failed'))))))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Logic/workflows",
+              "apiVersion": "2019-05-01",
+              "name": "[parameters('logicAppName')]",
+              "location": "[parameters('location')]",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "tags": "[union(parameters('tags'), createObject('purpose', 'daily-openai-cleanup'))]",
+              "properties": {
+                "state": "Enabled",
+                "definition": {
+                  "$schema": "[variables('workflowSchema')]",
+                  "contentVersion": "1.0.0.0",
+                  "triggers": {
+                    "Recurrence": {
+                      "type": "Recurrence",
+                      "recurrence": {
+                        "frequency": "Day",
+                        "interval": 1,
+                        "schedule": {
+                          "hours": [
+                            "[parameters('deleteHour')]"
+                          ],
+                          "minutes": [
+                            "[parameters('deleteMinute')]"
+                          ]
+                        },
+                        "timeZone": "[parameters('timeZone')]"
+                      }
+                    }
+                  },
+                  "actions": "[variables('workflowActions')]",
+                  "outputs": {}
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "scope": "[resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName'))]",
+              "name": "[guid(resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName')), parameters('logicAppName'), 'daily-delete-contributor')]",
+              "properties": {
+                "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
+                "principalId": "[reference(resourceId('Microsoft.Logic/workflows', parameters('logicAppName')), '2019-05-01', 'full').identity.principalId]",
+                "principalType": "ServicePrincipal",
+                "description": "Allows the cleanup Logic App to delete the Azure OpenAI account."
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "cleanupLogicAppName": {
+              "type": "string",
+              "value": "[parameters('logicAppName')]"
+            },
+            "cleanupLogicAppIdentityPrincipalId": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Logic/workflows', parameters('logicAppName')), '2019-05-01', 'full').identity.principalId]"
+            },
+            "targetAccountResourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName'))]"
+            },
+            "targetEmbeddingDeploymentResourceId": {
+              "type": "string",
+              "value": "[variables('embeddingDeploymentResourceId')]"
+            },
+            "scheduledTime": {
+              "type": "string",
+              "value": "[format('{0}:{1} {2}', padLeft(string(parameters('deleteHour')), 2, '0'), padLeft(string(parameters('deleteMinute')), 2, '0'), parameters('timeZone'))]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName'))]",
+        "[resourceId('Microsoft.CognitiveServices/accounts/deployments', parameters('accountName'), parameters('embeddingDeploymentName'))]",
+        "[resourceId('Microsoft.CognitiveServices/accounts/deployments', parameters('accountName'), parameters('deploymentName'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "accountName": {
+      "type": "string",
+      "value": "[parameters('accountName')]"
+    },
+    "endpoint": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts', parameters('accountName')), '2024-10-01').endpoint]"
+    },
+    "deploymentName": {
+      "type": "string",
+      "value": "[if(and(parameters('deployModel'), not(parameters('restore'))), parameters('deploymentName'), '')]"
+    },
+    "embeddingDeploymentName": {
+      "type": "string",
+      "value": "[if(and(parameters('deployEmbeddingModel'), not(parameters('restore'))), parameters('embeddingDeploymentName'), '')]"
+    },
+    "cleanupLogicAppName": {
+      "type": "string",
+      "value": "[if(parameters('deployDailyDeleteSchedule'), variables('cleanupLogicAppName'), '')]"
+    },
+    "cleanupScheduledTime": {
+      "type": "string",
+      "value": "[if(parameters('deployDailyDeleteSchedule'), format('{0}:{1} {2}', padLeft(string(parameters('deleteHour')), 2, '0'), padLeft(string(parameters('deleteMinute')), 2, '0'), parameters('deleteTimeZone')), '')]"
+    }
+  }
+}

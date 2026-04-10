@@ -1,0 +1,59 @@
+{
+  "system_prompt": null,
+  "chat_history": [
+    {
+      "user_message": "my name is Noora",
+      "assistant_message": "Hi Noora! Nice to meet you. How can I help you today?",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
+    },
+    {
+      "user_message": "whats my name",
+      "assistant_message": "Your name is Noora!",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
+    }
+  ],
+  "conversation_items": [
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "my name is Noora"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hi Noora! Nice to meet you. How can I help you today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "whats my name"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Your name is Noora!"
+        }
+      ]
+    }
+  ]
+}
