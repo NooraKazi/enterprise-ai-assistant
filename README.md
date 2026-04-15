@@ -8,11 +8,7 @@ A simple, flexible CLI tool to ask anything and get AI responses. Supports multi
 
 ### 1. Install Dependencies
 ```bash
-<<<<<<< HEAD
-cd apps/llm
-=======
 root folder
->>>>>>> 483453c (Add semantic search functionality)
 pip install -r requirements.txt
 ```
 
@@ -69,11 +65,7 @@ export GITHUB_MODEL="gpt-4o-mini"
 
 #### Interactive Mode (Default)
 ```bash
-<<<<<<< HEAD
-python openai_client.py
-=======
 python .\apps\llm\openai_client.py
->>>>>>> 483453c (Add semantic search functionality)
 ```
 
 #### CLI Chatbot With History
@@ -318,20 +310,6 @@ pip install openai requests
 2. **Azure OpenAI**: Create resource in Azure portal
 3. **GitHub**: Create token at [github.com/settings/tokens](https://github.com/settings/tokens)
 
-<<<<<<< HEAD
-## 📈 Next Steps
-
-This is Day 1 of building the Enterprise AI Assistant core brain. Next steps:
-- Add conversation memory
-- Integrate with databases
-- Add web search capabilities
-- Build agent workflows
-- Add evaluation framework
-
----
-
-Built with ❤️ for the Enterprise AI Assistant project
-=======
 ## 🔍 Semantic Search with FAISS
 
 The Enterprise AI Assistant includes a powerful semantic search system using FAISS (Facebook AI Similarity Search) for vector-based document retrieval. This RAG (Retrieval Augmented Generation) component enables intelligent document search based on meaning rather than just keywords.
@@ -438,4 +416,3 @@ The semantic search system uses Azure OpenAI's `text-embedding-3-small` model to
 
 
 Built with ❤️ for the Enterprise AI Assistant project
->>>>>>> 483453c (Add semantic search functionality)
