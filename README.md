@@ -8,7 +8,11 @@ A simple, flexible CLI tool to ask anything and get AI responses. Supports multi
 
 ### 1. Install Dependencies
 ```bash
+<<<<<<< HEAD
 cd apps/llm
+=======
+root folder
+>>>>>>> 483453c (Add semantic search functionality)
 pip install -r requirements.txt
 ```
 
@@ -65,7 +69,11 @@ export GITHUB_MODEL="gpt-4o-mini"
 
 #### Interactive Mode (Default)
 ```bash
+<<<<<<< HEAD
 python openai_client.py
+=======
+python .\apps\llm\openai_client.py
+>>>>>>> 483453c (Add semantic search functionality)
 ```
 
 #### CLI Chatbot With History
@@ -310,6 +318,7 @@ pip install openai requests
 2. **Azure OpenAI**: Create resource in Azure portal
 3. **GitHub**: Create token at [github.com/settings/tokens](https://github.com/settings/tokens)
 
+<<<<<<< HEAD
 ## 📈 Next Steps
 
 This is Day 1 of building the Enterprise AI Assistant core brain. Next steps:
@@ -322,3 +331,111 @@ This is Day 1 of building the Enterprise AI Assistant core brain. Next steps:
 ---
 
 Built with ❤️ for the Enterprise AI Assistant project
+=======
+## 🔍 Semantic Search with FAISS
+
+The Enterprise AI Assistant includes a powerful semantic search system using FAISS (Facebook AI Similarity Search) for vector-based document retrieval. This RAG (Retrieval Augmented Generation) component enables intelligent document search based on meaning rather than just keywords.
+
+### Building Sample Documents
+
+Create a test semantic search index with sample AI/ML documents:
+
+```bash
+cd apps\rag
+python semantic_search.py --build-sample --index-path enterprise.faiss
+```
+
+This creates 7 curated AI/ML documents covering topics like:
+- Introduction to Artificial Intelligence
+- Machine Learning Fundamentals  
+- Deep Learning and Neural Networks
+- Large Language Models
+- AI Deployment Strategies
+- Vector Search and Embeddings
+- Retrieval Augmented Generation
+
+**Files Created:**
+- `enterprise.faiss` - Binary FAISS vector index for fast similarity search
+- `enterprise.meta.json` - Document metadata and embeddings in JSON format
+
+### Testing Semantic Search
+
+#### 1. Quick Index Statistics
+```bash
+python semantic_search.py --stats --index-path enterprise.faiss
+```
+Shows total documents, dimensions, and embedding provider details.
+
+#### 2. Basic Search Query
+```bash
+python semantic_search.py --query "machine learning basics" --index-path enterprise.faiss
+```
+Returns top 5 semantically similar documents with similarity scores.
+
+#### 3. Detailed Search with Content
+```bash
+python semantic_search.py --query "AI deployment strategies" --index-path enterprise.faiss --show-content
+```
+Displays full document content along with similarity scores.
+
+#### 4. Interactive Search Mode
+```bash
+python semantic_search.py --interactive --index-path enterprise.faiss
+```
+Launch interactive CLI for multiple searches and exploration.
+
+#### 5. Customized Search Results
+```bash
+# Get more results
+python semantic_search.py --query "deep learning" --index-path enterprise.faiss -k 10
+
+# Use specific provider
+python semantic_search.py --provider azure --query "vector search" --index-path enterprise.faiss
+```
+
+### Building Custom Indexes
+
+#### From Directory of Text Files
+```bash
+python semantic_search.py --build-index docs/ --index-path custom.faiss
+```
+
+#### From JSON Document Array
+```bash
+python semantic_search.py --build-json documents.json --index-path custom.faiss
+```
+
+### Integration with Embeddings
+
+Test the embeddings system directly:
+```bash
+python embeddings.py --provider azure --text "machine learning algorithms" --summary
+```
+
+### Example Search Results
+
+```
+🔍 Found 3 results:
+
+#1 📄 Machine Learning Fundamentals
+   🏷️  ID: machine_learning
+   📊 Score: 0.7275
+   🏷️  Metadata: category: Machine Learning, difficulty: intermediate
+
+#2 📄 Deep Learning and Neural Networks  
+   🏷️  ID: deep_learning
+   📊 Score: 0.5192
+   🏷️  Metadata: category: Deep Learning, difficulty: advanced
+
+#3 📄 Introduction to Artificial Intelligence
+   🏷️  ID: ai_intro
+   📊 Score: 0.4158
+   🏷️  Metadata: category: AI Basics, difficulty: beginner
+```
+
+The semantic search system uses Azure OpenAI's `text-embedding-3-small` model to create 1536-dimensional embeddings, then performs cosine similarity search via FAISS IndexFlatIP for fast, accurate results.
+
+
+
+Built with ❤️ for the Enterprise AI Assistant project
+>>>>>>> 483453c (Add semantic search functionality)

@@ -431,7 +431,7 @@ class LLMClient:
             return result
             
         except Exception as e:
-            return f"❌ Error: {str(e)}"
+            return f"❌ Error 1: {str(e)}"
 
     def _stringify_response(self, response: Union[str, Dict[str, Any]]) -> str:
         """Convert a response payload into a history-safe string."""
@@ -718,7 +718,7 @@ def interactive_mode(client: LLMClient):
             print("\n\n👋 Goodbye!")
             break
         except Exception as e:
-            print(f"\n❌ Error: {e}")
+            print(f"\n❌ Error 2: {e}")
 
 
 def main():

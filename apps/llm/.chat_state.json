@@ -2,16 +2,16 @@
   "system_prompt": null,
   "chat_history": [
     {
-      "user_message": "my name is Noora",
-      "assistant_message": "Hi Noora! Nice to meet you. How can I help you today?",
+      "user_message": "what can you do",
+      "assistant_message": "I can help you with many things! I can answer questions, tell stories, explain tricky ideas, and help you learn new stuff. I can also help write stories, poems, or even thank-you notes. If you have a homework problem or want to know about animals, science, or history, just ask!",
       "prompt_template": "chatbot_personality",
       "prompt_file": "chatbot_personality.txt"
     },
     {
-      "user_message": "whats my name",
-      "assistant_message": "Your name is Noora!",
-      "prompt_template": "chatbot_personality",
-      "prompt_file": "chatbot_personality.txt"
+      "user_message": "List 3 programming languages as JSON",
+      "assistant_message": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}",
+      "prompt_template": "json_extractor",
+      "prompt_file": "json_extractor.txt"
     }
   ],
   "conversation_items": [
@@ -21,7 +21,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "my name is Noora"
+          "text": "what can you do"
         }
       ]
     },
@@ -31,7 +31,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "Hi Noora! Nice to meet you. How can I help you today?"
+          "text": "I can help you with many things! I can answer questions, tell stories, explain tricky ideas, and help you learn new stuff. I can also help write stories, poems, or even thank-you notes. If you have a homework problem or want to know about animals, science, or history, just ask!"
         }
       ]
     },
@@ -41,7 +41,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "whats my name"
+          "text": "List 3 programming languages as JSON"
         }
       ]
     },
@@ -51,7 +51,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "Your name is Noora!"
+          "text": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}"
         }
       ]
     }
