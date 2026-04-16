@@ -12,7 +12,17 @@ root folder
 pip install -r requirements.txt
 ```
 
-### 2. Set Up API Keys
+### 2. Quick Demo - Enhanced Search System
+```bash
+# Test the enhanced RAG search system
+cd apps\rag
+python improved_search.py --query "machine learning" --hybrid --rerank --boost-recent --show-explanation
+
+# Or try interactive mode
+python improved_search.py --interactive
+```
+
+### 3. Set Up API Keys
 
 #### Option A: OpenAI (Default)
 ```bash
@@ -61,7 +71,7 @@ export GITHUB_TOKEN="your-github-token"
 export GITHUB_MODEL="gpt-4o-mini"
 ```
 
-### 3. Run the Tool
+### 4. Run the Tool
 
 #### Interactive Mode (Default)
 ```bash
@@ -256,6 +266,14 @@ python openai_client.py -p azure -s "You are a concise project assistant"
 - Azure OpenAI (Microsoft Foundry)
 - GitHub Models (Free tier available)
 
+✅ **Enhanced RAG Search System**
+- Advanced enhanced search with multi-factor ranking (semantic + keyword + recency + boost)
+- Smart document chunking with Microsoft best practices (1500 chars, 300 overlap)
+- Hybrid search combining TF-IDF and semantic similarity
+- Re-ranking pipeline with configurable weights and diversity filtering
+- Basic semantic search with FAISS vector similarity
+- Interactive search modes with comprehensive analytics
+
 ✅ **Advanced Response Formats**
 - Text responses (default)
 - JSON object responses
@@ -273,6 +291,13 @@ python openai_client.py -p azure -s "You are a concise project assistant"
 - Client configuration tracks the last prompt template and prompt file used
 - Reusable tone presets and output format presets
 - Real-time streaming output
+
+✅ **Production RAG Capabilities**
+- Document chunking with multiple strategies (fixed, sentence, semantic, hybrid)
+- Enhanced metadata tracking (keywords, dates, relationships, boost factors)
+- Multiple similarity metrics (cosine, dot product, euclidean)
+- Comprehensive search statistics and performance monitoring
+- Enterprise-grade JSON serialization and state persistence
 
 ✅ **Easy Configuration**
 - Environment variables
@@ -310,108 +335,155 @@ pip install openai requests
 2. **Azure OpenAI**: Create resource in Azure portal
 3. **GitHub**: Create token at [github.com/settings/tokens](https://github.com/settings/tokens)
 
-## 🔍 Semantic Search with FAISS
+## 🔍 Enhanced RAG Search System
 
-The Enterprise AI Assistant includes a powerful semantic search system using FAISS (Facebook AI Similarity Search) for vector-based document retrieval. This RAG (Retrieval Augmented Generation) component enables intelligent document search based on meaning rather than just keywords.
+The Enterprise AI Assistant features a comprehensive search system with both basic semantic search and advanced enhanced search capabilities for production-grade RAG (Retrieval Augmented Generation) applications.
 
-### Building Sample Documents
+### ✨ Enhanced Search (Recommended)
 
-Create a test semantic search index with sample AI/ML documents:
+**Advanced search with improved ranking, chunking, and hybrid capabilities:**
 
 ```bash
 cd apps\rag
+
+# Quick start with sample data
+python improved_search.py --build-with-chunks --index-path enhanced.faiss
+
+# Enhanced search with all features
+python improved_search.py --query "machine learning deployment" --hybrid --rerank --boost-recent --show-explanation
+
+# Interactive enhanced search
+python improved_search.py --interactive
+```
+
+#### ⭐ Key Enhanced Features
+
+**🎯 Advanced Ranking System:**
+- **Multi-Factor Scoring**: Semantic similarity + TF-IDF keywords + recency boost + manual boost factors
+- **Hybrid Search**: Configurable blending of semantic (70%) and keyword (30%) search
+- **Re-ranking Pipeline**: Multiple scoring factors applied for better relevance
+- **Diversity Filtering**: Prevents similar results from dominating output
+
+**🔪 Smart Document Chunking:**
+- **Microsoft Best Practices**: Follows Azure Search recommendations (1500 chars, 300 overlap)
+- **Multiple Strategies**: Fixed-size, sentence-aware, semantic (paragraph), hybrid chunking
+- **Context Preservation**: Maintains document relationships and chunk metadata
+- **Granular Search**: Search within document chunks for better precision
+
+**📊 Production Features:**
+- **Enhanced Metadata**: Keywords, creation dates, boost factors, chunk relationships
+- **Comprehensive Analytics**: Detailed statistics and performance metrics
+- **Flexible Configuration**: Multiple similarity metrics, configurable weights
+- **Enterprise Ready**: JSON serialization, state persistence, monitoring capabilities
+
+#### Enhanced Search Commands
+
+```bash
+# Basic enhanced search
+python improved_search.py --query "artificial intelligence"
+
+# Full enhanced search with explanations
+python improved_search.py --query "deep learning" --hybrid --rerank --boost-recent --show-explanation --show-content
+
+# Custom hybrid weights (80% semantic, 20% keyword)
+python improved_search.py --query "AI ethics" --hybrid --alpha 0.8
+
+# Different similarity metrics
+python improved_search.py --query "neural networks" --similarity dot_product
+
+# Interactive mode with advanced commands
+python improved_search.py --interactive
+# Interactive commands: <query>, hybrid <query>, plain <query>, stats, help, quit
+```
+
+#### Building Enhanced Indexes
+
+```bash
+# Sample documents with chunking (recommended)
+python improved_search.py --build-with-chunks
+
+# Custom documents from directory
+python improved_search.py --build-from-dir /path/to/docs --index-path custom.faiss
+
+# Configure chunking strategy
+python improved_search.py --build-with-chunks --chunk-strategy sentence --chunk-size 1200 --overlap 200
+```
+
+### 🔍 Basic Semantic Search
+
+**Simple vector-based document search using FAISS:**
+
+```bash
+# Build basic index
 python semantic_search.py --build-sample --index-path enterprise.faiss
-```
 
-This creates 7 curated AI/ML documents covering topics like:
-- Introduction to Artificial Intelligence
-- Machine Learning Fundamentals  
-- Deep Learning and Neural Networks
-- Large Language Models
-- AI Deployment Strategies
-- Vector Search and Embeddings
-- Retrieval Augmented Generation
-
-**Files Created:**
-- `enterprise.faiss` - Binary FAISS vector index for fast similarity search
-- `enterprise.meta.json` - Document metadata and embeddings in JSON format
-
-### Testing Semantic Search
-
-#### 1. Quick Index Statistics
-```bash
-python semantic_search.py --stats --index-path enterprise.faiss
-```
-Shows total documents, dimensions, and embedding provider details.
-
-#### 2. Basic Search Query
-```bash
+# Basic semantic search
 python semantic_search.py --query "machine learning basics" --index-path enterprise.faiss
-```
-Returns top 5 semantically similar documents with similarity scores.
 
-#### 3. Detailed Search with Content
-```bash
-python semantic_search.py --query "AI deployment strategies" --index-path enterprise.faiss --show-content
-```
-Displays full document content along with similarity scores.
-
-#### 4. Interactive Search Mode
-```bash
+# Interactive basic search
 python semantic_search.py --interactive --index-path enterprise.faiss
 ```
-Launch interactive CLI for multiple searches and exploration.
 
-#### 5. Customized Search Results
-```bash
-# Get more results
-python semantic_search.py --query "deep learning" --index-path enterprise.faiss -k 10
+### 📊 Performance Comparison
 
-# Use specific provider
-python semantic_search.py --provider azure --query "vector search" --index-path enterprise.faiss
+**Enhanced vs Basic Search Results for "machine learning deployment":**
+
+```
+Enhanced Search (improved_search.py):
+#1 📄 Large Language Model Deployment Strategies - Score: 0.7134
+   🎯 Score Breakdown: Semantic: 0.645, Keyword: 0.089, Recency: 1.2x, Boost: 1.5x
+   ✂️  Chunk: 0 (490 chars, strategy: fixed)
+   🔑 Keywords: deployment, deploying, large, language, models
+
+Basic Search (semantic_search.py):  
+#1 📄 Large Language Model Deployment Strategies - Score: 0.6245
+   🏷️  Full document search only
 ```
 
-### Building Custom Indexes
+### 🛠️ Integration with Embeddings
 
-#### From Directory of Text Files
-```bash
-python semantic_search.py --build-index docs/ --index-path custom.faiss
-```
-
-#### From JSON Document Array
-```bash
-python semantic_search.py --build-json documents.json --index-path custom.faiss
-```
-
-### Integration with Embeddings
-
-Test the embeddings system directly:
+Test the underlying embeddings system:
 ```bash
 python embeddings.py --provider azure --text "machine learning algorithms" --summary
 ```
 
-### Example Search Results
+### 📈 Index Statistics
 
-```
-🔍 Found 3 results:
+View comprehensive analytics:
+```bash
+# Enhanced search statistics
+python improved_search.py --stats
 
-#1 📄 Machine Learning Fundamentals
-   🏷️  ID: machine_learning
-   📊 Score: 0.7275
-   🏷️  Metadata: category: Machine Learning, difficulty: intermediate
-
-#2 📄 Deep Learning and Neural Networks  
-   🏷️  ID: deep_learning
-   📊 Score: 0.5192
-   🏷️  Metadata: category: Deep Learning, difficulty: advanced
-
-#3 📄 Introduction to Artificial Intelligence
-   🏷️  ID: ai_intro
-   📊 Score: 0.4158
-   🏷️  Metadata: category: AI Basics, difficulty: beginner
+# Basic search statistics  
+python semantic_search.py --stats --index-path enterprise.faiss
 ```
 
-The semantic search system uses Azure OpenAI's `text-embedding-3-small` model to create 1536-dimensional embeddings, then performs cosine similarity search via FAISS IndexFlatIP for fast, accurate results.
+### 🎯 Sample Data
+
+Both search systems include high-quality sample documents covering:
+- **Artificial Intelligence**: Fundamentals and 2024 developments
+- **Machine Learning**: Advanced techniques and algorithms
+- **Deep Learning**: Neural networks and current trends
+- **LLM Deployment**: Production strategies and best practices
+- **AI Ethics**: Responsible AI development principles
+- **Vector Search**: Advanced embeddings and search techniques
+- **RAG Systems**: Production best practices and implementation
+
+### 🚀 Production Recommendations
+
+**For Production RAG Systems:**
+- ✅ Use `improved_search.py` for better ranking and chunking
+- ✅ Enable hybrid search for keyword + semantic relevance
+- ✅ Use chunking for better granularity and context windows
+- ✅ Enable re-ranking for multi-factor scoring
+- ✅ Monitor with statistics and scoring explanations
+
+**For Simple Prototypes:**
+- ✅ Use `semantic_search.py` for basic vector similarity
+- ✅ Fast setup with minimal configuration
+- ✅ Good for initial RAG experimentation
+
+Both systems use Azure OpenAI's `text-embedding-3-small` model for 1536-dimensional embeddings with optimized FAISS IndexFlatIP for fast cosine similarity search.
 
 
 
