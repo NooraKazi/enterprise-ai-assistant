@@ -24,9 +24,18 @@ python improved_search.py --interactive
 
 ### 3. Set Up API Keys
 
-#### Option A: OpenAI (Default)
+**Recommended: Using .env file**
+
 ```bash
-export OPENAI_API_KEY="your-openai-api-key"
+# Copy environment template
+copy .env.template .env
+# Edit .env file with your credentials (see configuration options below)
+```
+
+#### Option A: OpenAI (Default)
+Add to your `.env` file:
+```env
+OPENAI_API_KEY=your-openai-api-key
 ```
 
 #### Option B: Azure OpenAI (Microsoft Foundry)
@@ -43,32 +52,39 @@ The template now creates both a chat deployment and an embeddings deployment by 
 ```powershell
 az deployment group create --resource-group rg-enterprise-ai-assistant --template-file .\infra\azure-openai-setup.bicep --parameters accountName=ai-enterprise-ai-assistant-dev01 deployDailyDeleteSchedule=true
 ```
-```powershell to check embeddings created
-python embeddings.py --provider azure --text "Explain vector search" --summary
+
+Step 2. Add to your `.env` file:
+
+```env
+AI_PROVIDER=azure
+AZURE_OPENAI_API_KEY=your-azure-key
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+# Chat deployment used by openai_client.py:
+AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4.1-nano
+# Embeddings deployment used by ../rag/embeddings.py:
+AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
+# Optional: print an embedding summary after each chat turn:
+# AI_SHOW_EMBEDDINGS=true
+# AI_EMBEDDING_PREVIEW_LENGTH=5
+# Optional explicit v1 base URL override:
+# AZURE_OPENAI_BASE_URL=https://your-resource.openai.azure.com/openai/v1/
 ```
 
-Step 2. Set the environment variables in PowerShell.
-
+**Alternative: PowerShell environment variables (legacy)**
 ```powershell
 $env:AI_PROVIDER="azure"
 $env:AZURE_OPENAI_API_KEY="your-azure-key"
 $env:AZURE_OPENAI_ENDPOINT="https://your-resource.openai.azure.com/"
-# Chat deployment used by openai_client.py:
 $env:AZURE_OPENAI_DEPLOYMENT_NAME="gpt-4.1-nano"
-# Embeddings deployment used by ../rag/embeddings.py:
 $env:AZURE_OPENAI_EMBEDDING_DEPLOYMENT="text-embedding-3-small"
-# Optional: print an embedding summary after each chat turn:
-# $env:AI_SHOW_EMBEDDINGS="true"
-# $env:AI_EMBEDDING_PREVIEW_LENGTH="5"
-# Optional explicit v1 base URL override:
-# $env:AZURE_OPENAI_BASE_URL="https://your-resource.openai.azure.com/openai/v1/"
 ```
 
 #### Option C: GitHub Models (Free to start)
-```bash
-export AI_PROVIDER="github"
-export GITHUB_TOKEN="your-github-token"
-export GITHUB_MODEL="gpt-4o-mini"
+Add to your `.env` file:
+```env
+AI_PROVIDER=github
+GITHUB_TOKEN=your-github-token
+GITHUB_MODEL=gpt-4o-mini
 ```
 
 ### 4. Run the Tool
@@ -334,6 +350,221 @@ pip install openai requests
 1. **OpenAI**: Visit [platform.openai.com](https://platform.openai.com/api-keys)
 2. **Azure OpenAI**: Create resource in Azure portal
 3. **GitHub**: Create token at [github.com/settings/tokens](https://github.com/settings/tokens)
+
+## 🤖 Mini RAG Implementation
+
+**Complete end-to-end Retrieval-Augmented Generation system combining search + LLM generation.**
+
+The Mini RAG system provides a production-ready implementation that retrieves relevant documents and generates contextually-aware responses using Azure OpenAI.
+
+### 🚀 Quick Start with Mini RAG
+
+```bash
+cd apps\rag
+
+# 1. Install dependencies (including python-dotenv)
+pip install -r ../../requirements.txt
+
+# 2. Copy environment template and configure your credentials
+copy ..\..\env.template ..\..\env
+# Edit .env file with your Azure OpenAI credentials
+
+# 3. Test Azure configuration
+python test_azure_setup.py
+
+# 4. Build knowledge base from your data
+python mini_rag.py --build-index --data ../../data/insurance_data.json
+
+# 5. Interactive question answering
+python mini_rag.py --interactive
+
+# 6. Single question mode
+python mini_rag.py --query "What types of insurance policies are available?"
+```
+
+### ✨ Mini RAG Features
+
+**🔍 Document Retrieval:**
+- **Semantic Search**: FAISS-based vector similarity with Azure OpenAI embeddings
+- **Smart Chunking**: Sentence-aware chunking with NLTK for optimal context preservation
+- **Enhanced Search**: Multi-factor ranking with semantic + keyword scoring
+- **Metadata Tracking**: Document relationships, keywords, and boost factors
+
+**🧠 LLM Generation:**
+- **Azure OpenAI Integration**: GPT-4 powered response generation
+- **Context-Aware Answers**: Retrieved documents provide relevant context
+- **Prompt Templates**: Optimized prompts for RAG-based question answering
+- **Streaming Support**: Real-time response generation
+
+**⚙️ Production Configuration:**
+- **Configurable Models**: Support for different Azure OpenAI deployments
+- **Chunking Strategies**: Fixed, sentence-aware, semantic, or hybrid chunking
+- **Search Parameters**: Adjustable similarity thresholds and result counts
+- **Error Handling**: Graceful fallbacks and comprehensive error messages
+
+### 📋 Mini RAG Usage Examples
+
+#### Interactive Mode (Recommended)
+```bash
+python mini_rag.py --interactive
+
+# Example session:
+🤖 Mini RAG - Insurance Knowledge Assistant
+💡 Type 'quit' to exit, 'stats' for system info
+
+🤔 Ask about insurance: What coverage options are available?
+🔍 Found 3 relevant documents...
+📋 Context from: policy_types.json, coverage_details.json, benefits.json
+
+🤖 Based on the insurance documents, here are the available coverage options:
+
+1. **Auto Insurance**: Comprehensive collision coverage...
+2. **Health Insurance**: Individual and family plans...
+3. **Life Insurance**: Term and whole life policies...
+```
+
+#### Single Question Mode
+```bash
+# Ask a specific question
+python mini_rag.py --query "What is the claims process?"
+
+# With custom search parameters
+python mini_rag.py --query "Tell me about deductibles" --top-k 5
+
+# With hybrid search (semantic + keyword)
+python mini_rag.py --query "Premium calculation methods" --hybrid
+
+# With detailed explanations
+python mini_rag.py --query "Coverage options" --explain
+```
+
+#### Building Knowledge Base
+```bash
+# Build from data directory (supports JSON, PDF, CSV, TXT)
+python mini_rag.py --build-index --data ../../data/
+
+# Build from specific file
+python mini_rag.py --build-index --data ../../data/insurance_data.json
+
+# Build with custom index path
+python mini_rag.py --build-index --data ../../data/ --index-path my_custom_index.faiss
+```
+
+### 🔧 Mini RAG Configuration
+
+#### Environment Setup (.env file)
+```bash
+# 1. Copy the template
+copy .env.template .env
+
+# 2. Edit .env with your actual credentials
+```
+
+**.env file example:**
+```env
+# Required: Azure OpenAI credentials
+AZURE_OPENAI_API_KEY=your-azure-openai-api-key-here
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+
+# Optional: Model deployments (defaults provided)
+AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4.1-nano
+AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
+
+# Optional: RAG parameters
+RAG_TOP_K=3
+RAG_SIMILARITY_THRESHOLD=0.7
+```
+
+#### Legacy Environment Variables (PowerShell)
+If you prefer PowerShell environment variables instead of .env file:
+```powershell
+# Required: Azure OpenAI credentials
+$env:AZURE_OPENAI_API_KEY = "your-azure-openai-api-key"
+$env:AZURE_OPENAI_ENDPOINT = "https://your-resource.openai.azure.com/"
+
+# Optional: Model deployments (defaults provided)
+$env:AZURE_OPENAI_DEPLOYMENT_NAME = "gpt-4.1-nano"  # Chat model
+$env:AZURE_OPENAI_EMBEDDING_DEPLOYMENT = "text-embedding-3-small"  # Embeddings model
+
+# Optional: RAG parameters
+$env:RAG_TOP_K = "3"  # Number of documents to retrieve
+$env:RAG_SIMILARITY_THRESHOLD = "0.7"  # Minimum similarity score
+```
+
+#### Command Line Options
+```bash
+# Knowledge base building
+--build-index              # Build knowledge base from data
+--data PATH                # Path to data file or directory (JSON, PDF, CSV, TXT)
+--index-path PATH          # Path to FAISS index file (default: rag_index.faiss)
+
+# Interactive usage
+--interactive              # Start interactive Q&A session
+--query TEXT               # Ask single question and exit
+--explain                  # Show detailed retrieval explanations
+
+# Search parameters
+--top-k NUMBER            # Documents to retrieve (default: 3)
+--hybrid                  # Enable semantic + keyword search
+
+# LLM options
+--model NAME              # Override chat model deployment (default: gpt-4.1-nano)
+--temperature FLOAT       # LLM temperature (default: 0.1)
+```
+
+### 🏗️ Mini RAG Architecture
+
+```
+📁 Input Data (JSON/Text)
+    ↓
+🔪 Document Chunker (NLTK sentence-aware)
+    ↓
+🌐 Embedding Generation (Azure OpenAI text-embedding-3-small)
+    ↓
+💾 Vector Index (FAISS + Enhanced Metadata)
+    ↓
+🔍 Query Processing & Document Retrieval
+    ↓
+🤖 Context-Aware Response Generation (Azure OpenAI GPT-4)
+    ↓
+✨ Final Answer with Source Attribution
+```
+
+### 📊 Mini RAG System Components
+
+#### Core Classes
+- **`MiniRAG`**: Main orchestrator class managing search + generation pipeline
+- **`RAGConfig`**: Configuration dataclass for all system parameters
+- **`EnhancedSemanticSearch`**: Advanced search with hybrid ranking
+- **`DocumentChunker`**: Multi-strategy chunking with NLTK integration
+- **`EmbeddingGenerator`**: Azure OpenAI embedding interface
+
+#### Key Files
+- **`mini_rag.py`**: Main RAG system implementation
+- **`improved_search.py`**: Enhanced search with ranking algorithms
+- **`chunking.py`**: Advanced document chunking strategies
+- **`embeddings.py`**: Embedding generation and caching
+- **`test_azure_setup.py`**: Azure configuration verification
+
+### 💡 Best Practices
+
+**📚 Data Preparation:**
+- Use structured JSON with consistent field names
+- Include metadata like creation dates, categories, keywords
+- Ensure documents are substantial enough for meaningful chunks
+- Consider document relationships and hierarchies
+
+**🔧 Configuration Tuning:**
+- Start with sentence-aware chunking for most content types
+- Adjust chunk size based on your model's context window
+- Use 25% overlap (chunk_size/4) for optimal context preservation
+- Set similarity threshold based on your data quality and retrieval precision needs
+
+**🎯 Production Deployment:**
+- Monitor retrieval quality and adjust similarity thresholds
+- Implement feedback loops to improve chunk relevance
+- Cache embeddings for frequently accessed documents
+- Use hybrid search for better keyword + semantic matching
 
 ## 🔍 Enhanced RAG Search System
 

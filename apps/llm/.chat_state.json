@@ -12,6 +12,12 @@
       "assistant_message": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}",
       "prompt_template": "json_extractor",
       "prompt_file": "json_extractor.txt"
+    },
+    {
+      "user_message": "Hello, can you respond?",
+      "assistant_message": "Hello! Yes, I can respond. How can I help you today?",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
     }
   ],
   "conversation_items": [
@@ -52,6 +58,26 @@
         {
           "type": "output_text",
           "text": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Hello, can you respond?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! Yes, I can respond. How can I help you today?"
         }
       ]
     }

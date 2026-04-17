@@ -1,0 +1,42 @@
+[
+    {
+        "customer_id": 1,
+        "name": "John Doe",
+        "policy_id": "POL3001",
+        "policy_type": "Auto",
+        "premium": 1200,
+        "status": "Active"
+    },
+    {
+        "customer_id": 2,
+        "name": "Jane Smith",
+        "policy_id": "POL3002",
+        "policy_type": "Home",
+        "premium": 1500,
+        "status": "Active"
+    },
+    {
+        "customer_id": 3,
+        "name": "Alice Brown",
+        "policy_id": "POL3003",
+        "policy_type": "Life",
+        "premium": 2000,
+        "status": "Inactive"
+    },
+    {
+        "customer_id": 4,
+        "name": "Bob Johnson",
+        "policy_id": "POL3004",
+        "policy_type": "Auto",
+        "premium": 1100,
+        "status": "Active"
+    },
+    {
+        "customer_id": 5,
+        "name": "Charlie Davis",
+        "policy_id": "POL3005",
+        "policy_type": "Home",
+        "premium": 1700,
+        "status": "Pending"
+    }
+]

@@ -1,0 +1,6 @@
+customer_id,name,policy_id,policy_type,premium,status
+1,John Doe,POL3001,Auto,1200,Active
+2,Jane Smith,POL3002,Home,1500,Active
+3,Alice Brown,POL3003,Life,2000,Inactive
+4,Bob Johnson,POL3004,Auto,1100,Active
+5,Charlie Davis,POL3005,Home,1700,Pending

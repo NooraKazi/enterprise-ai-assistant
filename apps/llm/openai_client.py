@@ -13,6 +13,15 @@ from pathlib import Path
 from typing import Optional, Dict, Any, Union
 from dataclasses import asdict, dataclass, field
 import requests
+
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    # Load .env file from project root
+    env_path = Path(__file__).parent.parent.parent / ".env"
+    load_dotenv(env_path)
+except ImportError:
+    pass  # dotenv not installed, use system environment variables
 from enum import Enum
 
 from prompts import (
