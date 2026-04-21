@@ -2,9 +2,6 @@
 openai>=1.0.0
 # Used for lightweight HTTP lookups such as the GitHub Models catalog.
 requests>=2.31.0
-# Core dependencies for RAG and semantic search
-openai>=1.0.0
-requests>=2.31.0
 
 # Vector search and embeddings
 faiss-cpu>=1.7.4
@@ -23,3 +20,28 @@ PyPDF2>=3.0.0
 
 # Environment configuration
 python-dotenv>=1.0.0
+
+# LangChain Document Processing Framework
+langchain>=0.1.0
+langchain-community>=0.0.10
+langchain-text-splitters>=0.0.1
+langchain-unstructured>=0.1.0
+
+# Enhanced Document Loaders (textract removed due to dependency issues)
+unstructured>=0.10.0
+pytesseract>=0.3.10
+pillow>=10.0.0
+python-magic-bin>=0.4.14; sys_platform == "win32"
+python-magic>=0.4.27; sys_platform != "win32"
+
+# Additional file format support  
+python-docx>=0.8.11
+openpyxl>=3.1.0
+lxml>=4.9.0
+markdown>=3.5.0
+beautifulsoup4>=4.12.0
+jq>=1.4.0
+
+# Alternative document extraction (replaces textract)
+pdfplumber>=0.9.0
+python-pptx>=0.6.21
