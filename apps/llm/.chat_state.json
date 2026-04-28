@@ -204,6 +204,42 @@
       "assistant_message": "Certainly! Here's a simple Python function to calculate an insurance premium based on user inputs such as age, coverage amount, and risk factor. This example can be expanded based on specific business logic.\n\n```python\ndef calculate_premium(age, coverage_amount, risk_factor):\n    \"\"\"\n    Calculate insurance premium based on age, coverage amount, and risk factor.\n\n    Args:\n        age (int): The age of the applicant.\n        coverage_amount (float): The desired coverage amount.\n        risk_factor (float): A multiplier based on risk (e.g., 1.0 for normal risk, higher for high risk).\n\n    Returns:\n        float: The calculated premium.\n    \"\"\"\n\n    # Base premium could be a fixed amount or calculated based on coverage\n    base_premium = coverage_amount * 0.01  # Example: 1% of coverage as base premium\n\n    # Adjust premium based on age\n    if age < 25:\n        age_multiplier = 1.2  # Higher premium for young applicants\n    elif age > 60:\n        age_multiplier = 1.3  # Higher premium for older applicants\n    else:\n        age_multiplier = 1.0\n\n    # Final premium calculation\n    premium = base_premium * age_multiplier * risk_factor\n\n    return round(premium, 2)\n\n# Example usage:\npremium = calculate_premium(30, 100000, 1.0)\nprint(f\"The calculated premium is: ${premium}\")\n```\n\nFeel free to customize the factors and logic to match your specific requirements!",
       "prompt_template": "code_generator",
       "prompt_file": "code_generator.txt"
+    },
+    {
+      "user_message": "hello",
+      "assistant_message": "Hello! How can I assist you today?",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: hi how are you today\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How long does it take to process a claim?,Claims are typically processed within 7-14 business days after verification.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "Hello! I don\u2019t have feelings, but I\u2019m here to help. How can I assist you today?",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "hi how are you today",
+      "assistant_message": "Hello! I'm here and ready to assist you. How can I help today?",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: how do I file a claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
+      "assistant_message": "To file a claim, log into the customer portal or contact support. Submit the required documents, including photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "hello there",
+      "assistant_message": "Hello! How can I assist you today?",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: tell me about insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:",
+      "assistant_message": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each offering different coverage plans. Auto insurance covers accidents, theft, fire, natural disasters, and includes liability coverage. Home insurance protects property and personal belongings against risks like fire, theft, and natural disasters, with liability for injuries on the property. Life insurance provides financial support to beneficiaries, covering natural and accidental death [sources: Document 1 and Document 2].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
     }
   ],
   "conversation_items": [
@@ -884,6 +920,126 @@
         {
           "type": "output_text",
           "text": "Certainly! Here's a simple Python function to calculate an insurance premium based on user inputs such as age, coverage amount, and risk factor. This example can be expanded based on specific business logic.\n\n```python\ndef calculate_premium(age, coverage_amount, risk_factor):\n    \"\"\"\n    Calculate insurance premium based on age, coverage amount, and risk factor.\n\n    Args:\n        age (int): The age of the applicant.\n        coverage_amount (float): The desired coverage amount.\n        risk_factor (float): A multiplier based on risk (e.g., 1.0 for normal risk, higher for high risk).\n\n    Returns:\n        float: The calculated premium.\n    \"\"\"\n\n    # Base premium could be a fixed amount or calculated based on coverage\n    base_premium = coverage_amount * 0.01  # Example: 1% of coverage as base premium\n\n    # Adjust premium based on age\n    if age < 25:\n        age_multiplier = 1.2  # Higher premium for young applicants\n    elif age > 60:\n        age_multiplier = 1.3  # Higher premium for older applicants\n    else:\n        age_multiplier = 1.0\n\n    # Final premium calculation\n    premium = base_premium * age_multiplier * risk_factor\n\n    return round(premium, 2)\n\n# Example usage:\npremium = calculate_premium(30, 100000, 1.0)\nprint(f\"The calculated premium is: ${premium}\")\n```\n\nFeel free to customize the factors and logic to match your specific requirements!"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "hello"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! How can I assist you today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: hi how are you today\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How long does it take to process a claim?,Claims are typically processed within 7-14 business days after verification.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! I don\u2019t have feelings, but I\u2019m here to help. How can I assist you today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "hi how are you today"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! I'm here and ready to assist you. How can I help today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: how do I file a claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "To file a claim, log into the customer portal or contact support. Submit the required documents, including photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "hello there"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! How can I assist you today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: tell me about insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each offering different coverage plans. Auto insurance covers accidents, theft, fire, natural disasters, and includes liability coverage. Home insurance protects property and personal belongings against risks like fire, theft, and natural disasters, with liability for injuries on the property. Life insurance provides financial support to beneficiaries, covering natural and accidental death [sources: Document 1 and Document 2]."
         }
       ]
     }

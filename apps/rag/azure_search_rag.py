@@ -144,12 +144,42 @@ class AzureSearchRAG:
         # Check if this is a knowledge-seeking question that would benefit from document context
         question_lower = question.lower().strip()
         
-        # Use RAG for knowledge-seeking questions or questions that explicitly need document context
-        is_knowledge_question = any(word in question_lower for word in [
-            "what", "how", "when", "where", "why", "which", "who",
-            "explain", "describe", "tell me", "show me", "help",
-            "insurance", "policy", "claim", "coverage", "premium"
-        ])
+        # Exclude common casual conversation patterns that shouldn't trigger RAG
+        casual_patterns = [
+            "how are you", "how's it going", "how you doing", "how are things",
+            "hi", "hello", "hey", "good morning", "good afternoon", "good evening",
+            "thanks", "thank you", "bye", "goodbye", "see you", "nice to meet",
+            "what's up", "how's your day", "have a good", "take care"
+        ]
+        
+        is_casual_conversation = any(pattern in question_lower for pattern in casual_patterns)
+        
+        # Check for insurance/business domain keywords that definitely need RAG
+        domain_keywords = [
+            "insurance", "policy", "claim", "coverage", "premium", "deductible",
+            "file a claim", "report incident", "auto insurance", "life insurance", 
+            "home insurance", "health insurance"
+        ]
+        
+        has_domain_keywords = any(keyword in question_lower for keyword in domain_keywords)
+        
+        # More specific knowledge question patterns (avoiding casual greetings)
+        knowledge_patterns = [
+            "what is", "what are", "what does", "what happens",
+            "how do I", "how can I", "how to", "how long", "how much",
+            "when do", "when can", "when will", "when should",
+            "where do", "where can", "where is",
+            "why does", "why would", "why is",
+            "which", "who do", "who can",
+            "explain", "describe", "tell me about", "show me how"
+        ]
+        
+        has_knowledge_patterns = any(pattern in question_lower for pattern in knowledge_patterns)
+        
+        # Use RAG if:
+        # 1. Has domain keywords (definitely business-related), OR
+        # 2. Has knowledge patterns AND is not casual conversation
+        is_knowledge_question = has_domain_keywords or (has_knowledge_patterns and not is_casual_conversation)
         
         # Skip RAG for specific template types that don't need document context
         needs_specialized_template = resolved_template.name in ["json_extractor", "code_generator", "summarizer"]
