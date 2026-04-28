@@ -77,7 +77,11 @@ class AzureSearchRAG:
         
         # Initialize embedding and LLM services  
         from embeddings import EmbeddingConfig
-        embedding_config = EmbeddingConfig(provider="azure", model="text-embedding-3-small")
+        embedding_config = EmbeddingConfig(
+            provider="azure", 
+            model="text-embedding-3-small",
+            min_text_length=1  # Allow short queries like "help"
+        )
         self.embedding_service = EmbeddingGenerator(embedding_config)
         
         # Configure LLM client for Azure OpenAI
@@ -172,6 +176,11 @@ def main():
         try:
             response = rag.ask(args.query, top_k=args.top_k)
             print(f"🤖 Answer: {response}")
+            
+            # Show which prompt template was used
+            if hasattr(rag.llm_client.config, 'last_prompt_file') and rag.llm_client.config.last_prompt_file:
+                print(f"🧩 Prompt template: {rag.llm_client.config.last_prompt_file}")
+                
         except Exception as e:
             print(f"❌ Error: {e}")
             import traceback
@@ -196,6 +205,10 @@ def main():
             print("🔍 Searching Azure AI Search...")
             response = rag.ask(question)
             print(f"🤖 Answer: {response}")
+            
+            # Show which prompt template was used
+            if hasattr(rag.llm_client.config, 'last_prompt_file') and rag.llm_client.config.last_prompt_file:
+                print(f"🧩 Prompt template: {rag.llm_client.config.last_prompt_file}")
             
         except KeyboardInterrupt:
             print("\n👋 Goodbye!")

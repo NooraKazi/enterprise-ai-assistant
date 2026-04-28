@@ -73,6 +73,7 @@ python apps/rag/azure_search_rag.py
 🤖 Answer: If your car is stolen and you have insurance, immediately 
           report it to police within 24 hours and contact your insurance 
           company to file a claim under comprehensive coverage...
+🧩 Prompt template: rag_prompt.txt
 ```
 
 ### Programmatic Usage
@@ -115,6 +116,18 @@ Returns essential document fields:
 - `source`: File path for attribution
 - `title`: Document title
 - `chunkIndex`: Position within larger document
+
+### Prompt Template Tracking
+The system automatically displays which prompt template was used for generating responses:
+```bash
+🤖 Answer: [Response here]
+🧩 Prompt template: rag_prompt.txt
+```
+
+This helps with:
+- **Debugging**: Understanding how responses are generated
+- **Optimization**: Identifying which templates work best for different query types
+- **Transparency**: Knowing the prompt strategy used for each answer
 
 ## 📊 Performance & Scalability
 
@@ -239,10 +252,6 @@ This RAG system is designed for enterprise use. When contributing:
 2. Include comprehensive error handling and logging
 3. Update documentation for any API changes
 4. Test with realistic document collections and query volumes
-
-## 📄 License
-
-[MIT License](LICENSE) - Enterprise-friendly open source licensing
 
 ## 🆘 Support
 
