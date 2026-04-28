@@ -18,6 +18,54 @@
       "assistant_message": "Hello! Yes, I can respond. How can I help you today?",
       "prompt_template": "chatbot_personality",
       "prompt_file": "chatbot_personality.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:",
+      "assistant_message": "Yes, it is possible to have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: can I have multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "Yes, you can have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: what happens if my car insurance claim is over the coverage limit\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if the damage exceeds my coverage limit?,You will be responsible for any amount exceeding the policy coverage limit.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: Up to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Intentional or fraudulent damage   \n\u2022 Driving under the influence of alcohol or drugs\n\nDocument 3:\nSource: data\\policy_POL3004.pdf\nContent: $750 per claim \n \n2. Exclusions \nThis policy does not cover: \n\u2022 Driving under the influence  \n\u2022 Intentional damage  \n\u2022 Mechanical breakdowns  \n\u2022 Normal wear and tear  \n\u2022 Unauthorized use of the vehicle  \n \n3. Terms and Conditions \n\u2022 Incidents must be reported within 30 days  \n\u2022 Policyholder must provide accurate information  \n\u2022 Premium payments must be maintained for coverage validity  \n\u2022 Claims are subject to verification and approval  \n \n4. Claims Process \n1. Notify insurer immediately after incident  \n2. Submit supporting documents (photos, reports)  \n3. Claims reviewed within 7\u201310 business days  \n4. Payment issued after deductible adjustment\n\n\nAnswer:",
+      "assistant_message": "If your car insurance claim exceeds the coverage limit, you will be responsible for paying the amount that goes over the policy coverage limit [source: Document 1].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: how to file an insurance claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "To file an insurance claim, you can log into the customer portal or contact support, then submit required documents such as photos, reports, and incident details. The process involves notifying the insurer within 30 days, providing the policy number and incident description, and submitting supporting documents. The claim will then be reviewed, and you will receive a decision within 7\u201314 business days [sources: Document 1 and Document 2].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: what documents are needed for claims\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is documentation mandatory for all claims?,Yes, supporting documents are required for claim verification and approval.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "The required documents for filing a claim include ID proof, policy number, incident details, photos, and supporting reports [sources: Document 1, Document 2, and Document 3]. Supporting documents are mandatory for claim verification and approval.",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: what types of insurance policies are available\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:",
+      "assistant_message": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each with different coverage plans [source: Document 1 and Document 3].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
+      "assistant_message": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide the policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, settlement will be made after deducting any applicable deductible [sources: Document 2 and Document 3].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
+      "assistant_message": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide your policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, payment will be issued after deducting any applicable deductible [sources: Document 2 and Document 3].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
     }
   ],
   "conversation_items": [
@@ -78,6 +126,166 @@
         {
           "type": "output_text",
           "text": "Hello! Yes, I can respond. How can I help you today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Yes, it is possible to have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: can I have multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Yes, you can have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: what happens if my car insurance claim is over the coverage limit\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if the damage exceeds my coverage limit?,You will be responsible for any amount exceeding the policy coverage limit.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: Up to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Intentional or fraudulent damage   \n\u2022 Driving under the influence of alcohol or drugs\n\nDocument 3:\nSource: data\\policy_POL3004.pdf\nContent: $750 per claim \n \n2. Exclusions \nThis policy does not cover: \n\u2022 Driving under the influence  \n\u2022 Intentional damage  \n\u2022 Mechanical breakdowns  \n\u2022 Normal wear and tear  \n\u2022 Unauthorized use of the vehicle  \n \n3. Terms and Conditions \n\u2022 Incidents must be reported within 30 days  \n\u2022 Policyholder must provide accurate information  \n\u2022 Premium payments must be maintained for coverage validity  \n\u2022 Claims are subject to verification and approval  \n \n4. Claims Process \n1. Notify insurer immediately after incident  \n2. Submit supporting documents (photos, reports)  \n3. Claims reviewed within 7\u201310 business days  \n4. Payment issued after deductible adjustment\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "If your car insurance claim exceeds the coverage limit, you will be responsible for paying the amount that goes over the policy coverage limit [source: Document 1]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: how to file an insurance claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "To file an insurance claim, you can log into the customer portal or contact support, then submit required documents such as photos, reports, and incident details. The process involves notifying the insurer within 30 days, providing the policy number and incident description, and submitting supporting documents. The claim will then be reviewed, and you will receive a decision within 7\u201314 business days [sources: Document 1 and Document 2]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: what documents are needed for claims\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is documentation mandatory for all claims?,Yes, supporting documents are required for claim verification and approval.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The required documents for filing a claim include ID proof, policy number, incident details, photos, and supporting reports [sources: Document 1, Document 2, and Document 3]. Supporting documents are mandatory for claim verification and approval."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: what types of insurance policies are available\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each with different coverage plans [source: Document 1 and Document 3]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide the policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, settlement will be made after deducting any applicable deductible [sources: Document 2 and Document 3]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide your policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, payment will be issued after deducting any applicable deductible [sources: Document 2 and Document 3]."
         }
       ]
     }

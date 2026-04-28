@@ -1,28 +1,74 @@
-# Enterprise AI Assistant - LLM Client
+# Enterprise AI Assistant - Advanced RAG Document Processing System
 
-<!-- This README focuses on local CLI usage, provider setup, and the reusable prompt workflow. -->
+<!-- Enterprise-grade Retrieval Augmented Generation (RAG) system with comprehensive document processing and intelligent search capabilities. -->
 
-A simple, flexible CLI tool to ask anything and get AI responses. Supports multiple AI providers including OpenAI, Azure OpenAI (Microsoft Foundry), and GitHub Models.
+**Enterprise-grade RAG system** that transforms your document repositories into intelligent, queryable knowledge bases. Features multi-format document processing (20+ file types including PDF, DOCX, Excel, PowerPoint, Images with OCR), advanced chunking strategies, hybrid semantic search, and Azure OpenAI integration.
+
+## 🎯 **Key Capabilities**
+
+✅ **Multi-Format Document Processing**: PDF, DOCX, Excel, PowerPoint, HTML, Markdown, Images with OCR  
+✅ **Advanced Chunking**: Multiple strategies including sentence-aware, semantic, and hybrid approaches  
+✅ **Hybrid Search**: Combines semantic similarity with keyword matching for superior results  
+✅ **Multi-Factor Ranking**: Recency boost, manual boost, diversity filtering, and explainable scoring  
+✅ **Enterprise Features**: Parallel processing, error recovery, comprehensive metadata extraction  
+✅ **Azure Integration**: Azure OpenAI for LLM/embeddings, infrastructure as code with Bicep  
+✅ **Production Ready**: CLI tools, batch processing, configurable output formats
 
 ## 🚀 Quick Start
 
 ### 1. Install Dependencies
 ```bash
-root folder
 pip install -r requirements.txt
 ```
 
-### 2. Quick Demo - Enhanced Search System
+### 2. Document Processing Pipeline
 ```bash
-# Test the enhanced RAG search system
-cd apps\rag
-python improved_search.py --query "machine learning" --hybrid --rerank --boost-recent --show-explanation
+# Process single document with LangChain loaders
+python scripts/ingest.py --input document.pdf --output chunks/ --verbose
 
-# Or try interactive mode
+# Batch process entire directory with parallel workers
+python scripts/ingest.py --input-dir documents/ --output-dir chunks/ --parallel 4
+
+# Interactive mode with real-time feedback
+python scripts/ingest.py --interactive
+```
+
+### 3. Advanced RAG Search System
+```bash
+# Test hybrid semantic + keyword search
+cd apps\rag
+python improved_search.py --query "machine learning deployment" --hybrid --rerank --boost-recent --show-explanation
+
+# Interactive search mode with explainable ranking
 python improved_search.py --interactive
 ```
 
-### 3. Set Up API Keys
+### 4. Enterprise Document Formats Supported
+- **📄 Documents**: PDF, DOCX, TXT, HTML, Markdown
+- **📊 Spreadsheets**: Excel (XLSX), CSV with encoding detection
+- **🖼️ Images**: PNG, JPEG, GIF with OCR text extraction  
+- **📋 Presentations**: PowerPoint (PPTX) slide content
+- **💻 Code**: Jupyter Notebooks with cell separation
+- **🌐 Web**: HTML content with structure preservation
+
+## 🏗️ **Enterprise Architecture**
+
+### **What Makes This Enterprise-Grade?**
+- **🔧 LangChain Integration**: 20+ specialized document loaders with format-specific processing
+- **📊 Advanced Chunking**: Microsoft-recommended strategies (2000/500 char) with boundary detection  
+- **🔍 Hybrid Search**: 70% semantic + 30% keyword matching for superior relevance
+- **📈 Multi-Factor Ranking**: Recency boost, manual boost, diversity filtering with explainable scores
+- **⚡ Parallel Processing**: Configurable worker pools for batch document processing
+- **🛡️ Enterprise Reliability**: Multi-layer fallback system with comprehensive error recovery
+- **📋 Rich Metadata**: SHA256 checksums, processing timestamps, page counts, comprehensive audit trails
+
+### **Production Features**
+- **📁 Batch Processing**: Process entire document repositories in parallel
+- **💾 Multiple Output Formats**: JSON, JSONL, CSV for different downstream systems
+- **📊 Processing Analytics**: Comprehensive statistics and performance monitoring
+- **🔄 Incremental Updates**: Support for updating document collections
+
+## ⚙️ Set Up API Keys
 
 **Recommended: Using .env file**
 
