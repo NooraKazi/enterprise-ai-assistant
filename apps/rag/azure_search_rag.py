@@ -134,29 +134,56 @@ class AzureSearchRAG:
     def ask(self, question: str, top_k: int = 3) -> str:
         """Ask a question and get RAG-enhanced response."""
         
-        # 1. Retrieve relevant documents
-        search_results = self.search(question, top_k=top_k)
+        # Import prompt resolution to determine if this needs RAG
+        sys.path.append(str(Path(__file__).parent.parent / "llm"))
+        from prompts import resolve_prompt_template
         
-        # 2. Build context from search results
-        context_parts = []
-        for i, result in enumerate(search_results, 1):
-            context_parts.append(f"Document {i}:")
-            context_parts.append(f"Source: {result['source']}")
-            context_parts.append(f"Content: {result['content']}")
-            context_parts.append("")
+        # Determine what template this question naturally wants
+        resolved_template = resolve_prompt_template(question, "auto")
         
-        context = "\n".join(context_parts)
+        # Check if this is a knowledge-seeking question that would benefit from document context
+        question_lower = question.lower().strip()
         
-        # 3. Generate response using LLM
-        prompt = f"""Based on the following context documents, answer the question: {question}
+        # Use RAG for knowledge-seeking questions or questions that explicitly need document context
+        is_knowledge_question = any(word in question_lower for word in [
+            "what", "how", "when", "where", "why", "which", "who",
+            "explain", "describe", "tell me", "show me", "help",
+            "insurance", "policy", "claim", "coverage", "premium"
+        ])
+        
+        # Skip RAG for specific template types that don't need document context
+        needs_specialized_template = resolved_template.name in ["json_extractor", "code_generator", "summarizer"]
+        
+        # Use RAG if it's a knowledge question and not a specialized template request
+        if is_knowledge_question and not needs_specialized_template:
+            # 1. Retrieve relevant documents
+            search_results = self.search(question, top_k=top_k)
+            
+            # 2. Build context from search results
+            context_parts = []
+            for i, result in enumerate(search_results, 1):
+                context_parts.append(f"Document {i}:")
+                context_parts.append(f"Source: {result['source']}")
+                context_parts.append(f"Content: {result['content']}")
+                context_parts.append("")
+            
+            context = "\n".join(context_parts)
+            
+            # 3. Generate response using LLM with RAG context
+            prompt = f"""Based on the following context documents, answer the question: {question}
 
 Context:
 {context}
 
 Answer:"""
+            
+            response = self.llm_client.ask(prompt, prompt_template="rag")
+            return response
         
-        response = self.llm_client.ask(prompt)
-        return response
+        else:
+            # For casual conversation or specialized templates, use original question without RAG
+            response = self.llm_client.ask(question)
+            return response
 
 def main():
     """Azure Search RAG with command-line support."""

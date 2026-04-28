@@ -156,6 +156,54 @@
       "assistant_message": "You can check your policy status through the customer portal or by contacting support. If you need further assistance, support can help you.",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: summarize the home in surance policy\n\nContext:\nDocument 1:\nSource: data\\policy_POL3002.pdf\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\nDocument 2:\nSource: data\\policy_POL3005.pdf\nContent: Policy Document 5 \u2014 Home Insurance \nHOME INSURANCE POLICY DOCUMENT \nPolicy Number: POL3005 \nPolicyholder Name: Charlie Davis \nPolicy Type: Home Insurance \nPlan: Basic Home Protect \nEffective Date: May 1, 2025 \nExpiry Date: Apr 30, 2026 \nPolicy Status: Pending \n \n1. Coverage Details \nThis policy provides basic protection for residential property and selected risks. \nCovered Events: \n\u2022 Fire and smoke damage  \n\u2022 Theft and burglary  \n\u2022 Limited natural disaster coverage  \nProperty Coverage: \n\u2022 Structural damage (limited)  \n\u2022 Essential household items  \nCoverage Limit: \nUp to $120,000 for structure \nUp to $25,000 for personal belongings \nPremium: \n$1,700 annually \nDeductible: \n$1,500 per claim\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:",
+      "assistant_message": "The home insurance policy for Jane Smith (POL3002) provides protection for her residential property and personal belongings against risks such as fire, theft, natural disasters, and water damage (excluding negligence). It covers structural damage up to $200,000 and personal belongings up to $50,000. The policy is active from February 1, 2025, to January 31, 2026 [source: Document 1].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: hi how are you\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "Hello! I'm here to assist you. How can I help today?",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: Hello\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "Hello! How can I assist you today? If you want to check your policy status, you can do so through the customer portal or by contacting support.",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Hello",
+      "assistant_message": "Hello! How can I help you today?",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
+    },
+    {
+      "user_message": "List 3 programming languages as JSON",
+      "assistant_message": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}",
+      "prompt_template": "json_extractor",
+      "prompt_file": "json_extractor.txt"
+    },
+    {
+      "user_message": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
+      "assistant_message": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "Hi there",
+      "assistant_message": "Hello! How can I assist you today?",
+      "prompt_template": "chatbot_personality",
+      "prompt_file": "chatbot_personality.txt"
+    },
+    {
+      "user_message": "Write a Python function to calculate insurance premium",
+      "assistant_message": "Certainly! Here's a simple Python function to calculate an insurance premium based on user inputs such as age, coverage amount, and risk factor. This example can be expanded based on specific business logic.\n\n```python\ndef calculate_premium(age, coverage_amount, risk_factor):\n    \"\"\"\n    Calculate insurance premium based on age, coverage amount, and risk factor.\n\n    Args:\n        age (int): The age of the applicant.\n        coverage_amount (float): The desired coverage amount.\n        risk_factor (float): A multiplier based on risk (e.g., 1.0 for normal risk, higher for high risk).\n\n    Returns:\n        float: The calculated premium.\n    \"\"\"\n\n    # Base premium could be a fixed amount or calculated based on coverage\n    base_premium = coverage_amount * 0.01  # Example: 1% of coverage as base premium\n\n    # Adjust premium based on age\n    if age < 25:\n        age_multiplier = 1.2  # Higher premium for young applicants\n    elif age > 60:\n        age_multiplier = 1.3  # Higher premium for older applicants\n    else:\n        age_multiplier = 1.0\n\n    # Final premium calculation\n    premium = base_premium * age_multiplier * risk_factor\n\n    return round(premium, 2)\n\n# Example usage:\npremium = calculate_premium(30, 100000, 1.0)\nprint(f\"The calculated premium is: ${premium}\")\n```\n\nFeel free to customize the factors and logic to match your specific requirements!",
+      "prompt_template": "code_generator",
+      "prompt_file": "code_generator.txt"
     }
   ],
   "conversation_items": [
@@ -676,6 +724,166 @@
         {
           "type": "output_text",
           "text": "You can check your policy status through the customer portal or by contacting support. If you need further assistance, support can help you."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: summarize the home in surance policy\n\nContext:\nDocument 1:\nSource: data\\policy_POL3002.pdf\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\nDocument 2:\nSource: data\\policy_POL3005.pdf\nContent: Policy Document 5 \u2014 Home Insurance \nHOME INSURANCE POLICY DOCUMENT \nPolicy Number: POL3005 \nPolicyholder Name: Charlie Davis \nPolicy Type: Home Insurance \nPlan: Basic Home Protect \nEffective Date: May 1, 2025 \nExpiry Date: Apr 30, 2026 \nPolicy Status: Pending \n \n1. Coverage Details \nThis policy provides basic protection for residential property and selected risks. \nCovered Events: \n\u2022 Fire and smoke damage  \n\u2022 Theft and burglary  \n\u2022 Limited natural disaster coverage  \nProperty Coverage: \n\u2022 Structural damage (limited)  \n\u2022 Essential household items  \nCoverage Limit: \nUp to $120,000 for structure \nUp to $25,000 for personal belongings \nPremium: \n$1,700 annually \nDeductible: \n$1,500 per claim\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The home insurance policy for Jane Smith (POL3002) provides protection for her residential property and personal belongings against risks such as fire, theft, natural disasters, and water damage (excluding negligence). It covers structural damage up to $200,000 and personal belongings up to $50,000. The policy is active from February 1, 2025, to January 31, 2026 [source: Document 1]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: hi how are you\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! I'm here to assist you. How can I help today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: Hello\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! How can I assist you today? If you want to check your policy status, you can do so through the customer portal or by contacting support."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Hello"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! How can I help you today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "List 3 programming languages as JSON"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3]."
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Hi there"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Hello! How can I assist you today?"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Write a Python function to calculate insurance premium"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Certainly! Here's a simple Python function to calculate an insurance premium based on user inputs such as age, coverage amount, and risk factor. This example can be expanded based on specific business logic.\n\n```python\ndef calculate_premium(age, coverage_amount, risk_factor):\n    \"\"\"\n    Calculate insurance premium based on age, coverage amount, and risk factor.\n\n    Args:\n        age (int): The age of the applicant.\n        coverage_amount (float): The desired coverage amount.\n        risk_factor (float): A multiplier based on risk (e.g., 1.0 for normal risk, higher for high risk).\n\n    Returns:\n        float: The calculated premium.\n    \"\"\"\n\n    # Base premium could be a fixed amount or calculated based on coverage\n    base_premium = coverage_amount * 0.01  # Example: 1% of coverage as base premium\n\n    # Adjust premium based on age\n    if age < 25:\n        age_multiplier = 1.2  # Higher premium for young applicants\n    elif age > 60:\n        age_multiplier = 1.3  # Higher premium for older applicants\n    else:\n        age_multiplier = 1.0\n\n    # Final premium calculation\n    premium = base_premium * age_multiplier * risk_factor\n\n    return round(premium, 2)\n\n# Example usage:\npremium = calculate_premium(30, 100000, 1.0)\nprint(f\"The calculated premium is: ${premium}\")\n```\n\nFeel free to customize the factors and logic to match your specific requirements!"
         }
       ]
     }
