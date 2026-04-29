@@ -132,75 +132,92 @@ class AzureSearchRAG:
         return list(results)
     
     def ask(self, question: str, top_k: int = 3) -> str:
-        """Ask a question and get RAG-enhanced response."""
+        """Ask a question and get RAG-enhanced response with intelligent template routing."""
         
-        # Import prompt resolution to determine if this needs RAG
+        # Import the sophisticated intent inference system
         sys.path.append(str(Path(__file__).parent.parent / "llm"))
-        from prompts import resolve_prompt_template
+        from prompts import infer_prompt_template, resolve_prompt_template
         
-        # Determine what template this question naturally wants
-        resolved_template = resolve_prompt_template(question, "auto")
+        # Use the intelligent template inference to understand user intent
+        inferred_template = infer_prompt_template(question)
+        resolved_template = resolve_prompt_template(question)
         
-        # Check if this is a knowledge-seeking question that would benefit from document context
+        print(f"🧩 Detected template: {inferred_template.name}")
+        print(f"📄 Template file: {Path(inferred_template.file_path).name}")
+        print(f"📝 Description: {inferred_template.description}")
+        
+        # Analyze the question to determine if it's casual conversation or knowledge-seeking
         question_lower = question.lower().strip()
         
-        # Exclude common casual conversation patterns that shouldn't trigger RAG
+        # Detect casual conversation patterns that should use chatbot personality directly
         casual_patterns = [
-            "how are you", "how's it going", "how you doing", "how are things",
             "hi", "hello", "hey", "good morning", "good afternoon", "good evening",
-            "thanks", "thank you", "bye", "goodbye", "see you", "nice to meet",
-            "what's up", "how's your day", "have a good", "take care"
+            "how are you", "what's up", "thanks", "thank you", "bye", "goodbye",
+            "nice to meet you", "pleased to meet you", "how have you been",
+            "good day", "have a nice day", "see you", "take care"
         ]
         
-        is_casual_conversation = any(pattern in question_lower for pattern in casual_patterns)
+        general_conversation_patterns = [
+            "tell me a joke", "how's the weather", "what day is it", "what time",
+            "how old are you", "what's your name", "who are you", "who created you",
+            "what can you do", "help me with", "i need help", "can you help"
+        ]
         
-        # Check for insurance/business domain keywords that definitely need RAG
+        is_casual_conversation = (
+            any(pattern in question_lower for pattern in casual_patterns) or
+            any(pattern in question_lower for pattern in general_conversation_patterns) or
+            (len(question.split()) <= 5 and any(word in question_lower for word in ["hi", "hello", "hey", "thanks", "bye"]))
+        )
+        
+        # Check for domain-specific knowledge questions that need document search
         domain_keywords = [
-            "insurance", "policy", "claim", "coverage", "premium", "deductible",
-            "file a claim", "report incident", "auto insurance", "life insurance", 
-            "home insurance", "health insurance"
+            "insurance", "policy", "claim", "coverage", "premium", "deductible", 
+            "quote", "underwriting", "liability", "beneficiary", "pol3", "bob", "alice", "john"
         ]
+        has_domain_content = any(keyword in question_lower for keyword in domain_keywords)
         
-        has_domain_keywords = any(keyword in question_lower for keyword in domain_keywords)
+        if is_casual_conversation and not has_domain_content:
+            print("💬 Casual conversation detected: Using chatbot personality (no document search)")
+            # Use chatbot personality directly for general conversation
+            response = self.llm_client.ask(question, prompt_template=inferred_template.name)
+            self.last_template_used = inferred_template.name
+            self.last_template_file = Path(inferred_template.file_path).name
+            return response
         
-        # More specific knowledge question patterns (avoiding casual greetings)
-        knowledge_patterns = [
-            "what is", "what are", "what does", "what happens",
-            "how do I", "how can I", "how to", "how long", "how much",
-            "when do", "when can", "when will", "when should",
-            "where do", "where can", "where is",
-            "why does", "why would", "why is",
-            "which", "who do", "who can",
-            "explain", "describe", "tell me about", "show me how"
-        ]
+        # For knowledge questions, use strict document-only mode
+        print("🔒 Knowledge question detected: Using document-only mode")
         
-        has_knowledge_patterns = any(pattern in question_lower for pattern in knowledge_patterns)
-        
-        # Use RAG if:
-        # 1. Has domain keywords (definitely business-related), OR
-        # 2. Has knowledge patterns AND is not casual conversation
-        is_knowledge_question = has_domain_keywords or (has_knowledge_patterns and not is_casual_conversation)
-        
-        # Skip RAG for specific template types that don't need document context
-        needs_specialized_template = resolved_template.name in ["json_extractor", "code_generator", "summarizer"]
-        
-        # Use RAG if it's a knowledge question and not a specialized template request
-        if is_knowledge_question and not needs_specialized_template:
-            # 1. Retrieve relevant documents
-            search_results = self.search(question, top_k=top_k)
+        # Route based on intelligent detection
+        print("🔍 Searching knowledge base for document-grounded answer...")
             
-            # 2. Build context from search results
+        # ALWAYS perform vector search for knowledge questions
+        search_results = self.search(question, top_k=top_k)
+        
+        # Display search results for transparency
+        print(f"📊 Found {len(search_results)} relevant documents")
+        for i, result in enumerate(search_results, 1):
+            print(f"   {i}. {result['source']} (score: {result.get('@search.score', 'N/A')})")
+        
+        # ALWAYS use document context for knowledge questions - never general knowledge
+        if search_results:
+            # Build context from search results for RAG response  
             context_parts = []
             for i, result in enumerate(search_results, 1):
-                context_parts.append(f"Document {i}:")
-                context_parts.append(f"Source: {result['source']}")
+                source_file = Path(result['source']).name  # Extract just the filename
+                context_parts.append(f"Document {i} [Source: {source_file}]:")
                 context_parts.append(f"Content: {result['content']}")
                 context_parts.append("")
             
             context = "\n".join(context_parts)
             
-            # 3. Generate response using LLM with RAG context
-            prompt = f"""Based on the following context documents, answer the question: {question}
+            # Generate response using LLM with RAG context - STRICTLY document-based
+            prompt = f"""Based ONLY on the following context documents, answer the question: {question}
+
+IMPORTANT: 
+1. Only use information from the provided context documents
+2. When you reference information, cite the specific document by including the source filename in square brackets [filename]
+3. If multiple documents contribute to your answer, cite each relevant source
+4. If the context doesn't contain the information needed, say "I don't have enough information in the available documents to answer this question."
 
 Context:
 {context}
@@ -208,12 +225,29 @@ Context:
 Answer:"""
             
             response = self.llm_client.ask(prompt, prompt_template="rag")
-            return response
-        
+            
+            # Add source summary for transparency
+            source_files = [Path(result['source']).name for result in search_results]
+            unique_sources = list(dict.fromkeys(source_files))  # Remove duplicates while preserving order
+            source_summary = f"\n\n📚 Sources consulted: {', '.join(unique_sources)}"
+            response += source_summary
+            
+            # Always use RAG template for document-grounded answers
+            actual_template_used = "rag"
+            actual_template_file = "rag_prompt.txt"
+            
         else:
-            # For casual conversation or specialized templates, use original question without RAG
-            response = self.llm_client.ask(question)
-            return response
+            # No relevant documents found for knowledge question
+            response = "I don't have any relevant documents in my knowledge base to answer this question."
+            response += f"\n\n📚 Sources consulted: No relevant documents found"
+            actual_template_used = "rag"
+            actual_template_file = "rag_prompt.txt"
+        
+        # Store template information for display
+        self.last_template_used = actual_template_used
+        self.last_template_file = actual_template_file
+        
+        return response
 
 def main():
     """Azure Search RAG with command-line support."""
@@ -234,9 +268,9 @@ def main():
             response = rag.ask(args.query, top_k=args.top_k)
             print(f"🤖 Answer: {response}")
             
-            # Show which prompt template was used
-            if hasattr(rag.llm_client.config, 'last_prompt_file') and rag.llm_client.config.last_prompt_file:
-                print(f"🧩 Prompt template: {rag.llm_client.config.last_prompt_file}")
+            # Show template selection results
+            if hasattr(rag, 'last_template_used') and rag.last_template_used:
+                print(f"✅ Final template used: {rag.last_template_used} ({rag.last_template_file})")
                 
         except Exception as e:
             print(f"❌ Error: {e}")
@@ -263,9 +297,9 @@ def main():
             response = rag.ask(question)
             print(f"🤖 Answer: {response}")
             
-            # Show which prompt template was used
-            if hasattr(rag.llm_client.config, 'last_prompt_file') and rag.llm_client.config.last_prompt_file:
-                print(f"🧩 Prompt template: {rag.llm_client.config.last_prompt_file}")
+            # Show template selection results
+            if hasattr(rag, 'last_template_used') and rag.last_template_used:
+                print(f"✅ Final template used: {rag.last_template_used} ({rag.last_template_file})")
             
         except KeyboardInterrupt:
             print("\n👋 Goodbye!")

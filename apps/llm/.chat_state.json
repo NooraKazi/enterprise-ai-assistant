@@ -2,242 +2,86 @@
   "system_prompt": null,
   "chat_history": [
     {
-      "user_message": "what can you do",
-      "assistant_message": "I can help you with many things! I can answer questions, tell stories, explain tricky ideas, and help you learn new stuff. I can also help write stories, poems, or even thank-you notes. If you have a homework problem or want to know about animals, science, or history, just ask!",
+      "user_message": "Based ONLY on the following context documents, answer the question: what is the capital of France\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is flood damage always covered under home insurance?,Flood damage is typically not covered unless an additional rider or coverage is purchased.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What is a deductible?,A deductible is the amount you must pay before the insurer covers the remaining claim amount.,General\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if I miss a premium payment?,If a premium payment is missed, the policy may enter a grace period. If not paid within that period, the policy may become inactive.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "I don't have enough information in the available documents to answer this question.",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
+    },
+    {
+      "user_message": "thank you for your help",
+      "assistant_message": "You're welcome! If you have more questions, feel free to ask. Have a great day!",
       "prompt_template": "chatbot_personality",
       "prompt_file": "chatbot_personality.txt"
     },
     {
-      "user_message": "List 3 programming languages as JSON",
-      "assistant_message": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}",
-      "prompt_template": "json_extractor",
-      "prompt_file": "json_extractor.txt"
+      "user_message": "Based ONLY on the following context documents, answer the question: hello, can you tell me about Bob's insurance coverage\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:",
+      "assistant_message": "Bob's insurance coverage is an auto insurance policy with the policy number POL3004, effective from April 1, 2025, to March 31, 2026. It provides standard coverage for his vehicle against common risks, including accidental collision, fire, explosion, theft, and natural disasters like storms and floods. The policy includes liability coverage for injury to third parties and damage to third-party property, with a coverage limit of up to $40,000 per incident. The annual premium is $1,100 [source].",
+      "prompt_template": "rag",
+      "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Hello, can you respond?",
-      "assistant_message": "Hello! Yes, I can respond. How can I help you today?",
+      "user_message": "hello. what can you do",
+      "assistant_message": "Hello! I can answer questions based on the documents you provide. I help explain information, find details, or summarize what\u2019s in the data. Just ask me anything from the given context, and I\u2019ll do my best to help!",
       "prompt_template": "chatbot_personality",
       "prompt_file": "chatbot_personality.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:",
-      "assistant_message": "Yes, it is possible to have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1].",
+      "user_message": "Based ONLY on the following context documents, answer the question: who was alan turing\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3003.pdf\nContent: Policy Document 3 \u2014 Life Insurance  \nLIFE INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3003  \nPolicyholder Name: Alice Brown  \nPolicy Type: Life Insurance  \nPlan: Premium Life Cover  \nEffective Date: Mar 1, 2025  \nExpiry Date: Lifetime Coverage  \nPolicy Status: Inactive \n  \n1. Coverage Details  \nThis policy provides financial protection to the beneficiary in the event of the \npolicyholder\u2019s death.  \nBenefits:  \n\u2022 Lump sum payout to beneficiaries   \n\u2022 Coverage for natural and accidental death   \n\u2022 Optional riders for critical illness   \nCoverage Amount:  \nUp to $300,000  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Suicide within the first 2 years   \n\u2022 Death due to illegal activities   \n\u2022 Misrepresentation of health conditions\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Will my claim be approved automatically?,No, all claims go through a verification process before approval.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "I don't have enough information in the available documents to answer this question.",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: can I have multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Yes, you can have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1].",
+      "user_message": "Based ONLY on the following context documents, answer the question: tell me 3 programming languages\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\policy_POL3003.pdf\nContent: 3. Terms and Conditions  \n\u2022 Premiums must be paid regularly   \n\u2022 Accurate disclosure of health history is required   \n\u2022 Beneficiaries must provide valid documentation for claims   \n  \n4. Claims Process  \n\u2022 Beneficiary submits claim request   \n\u2022 Provide death certificate and policy documents   \n\u2022 Claim processed within 15 business days\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\n\nAnswer:",
+      "assistant_message": "I don't have enough information in the available documents to answer this question.",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: what happens if my car insurance claim is over the coverage limit\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if the damage exceeds my coverage limit?,You will be responsible for any amount exceeding the policy coverage limit.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: Up to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Intentional or fraudulent damage   \n\u2022 Driving under the influence of alcohol or drugs\n\nDocument 3:\nSource: data\\policy_POL3004.pdf\nContent: $750 per claim \n \n2. Exclusions \nThis policy does not cover: \n\u2022 Driving under the influence  \n\u2022 Intentional damage  \n\u2022 Mechanical breakdowns  \n\u2022 Normal wear and tear  \n\u2022 Unauthorized use of the vehicle  \n \n3. Terms and Conditions \n\u2022 Incidents must be reported within 30 days  \n\u2022 Policyholder must provide accurate information  \n\u2022 Premium payments must be maintained for coverage validity  \n\u2022 Claims are subject to verification and approval  \n \n4. Claims Process \n1. Notify insurer immediately after incident  \n2. Submit supporting documents (photos, reports)  \n3. Claims reviewed within 7\u201310 business days  \n4. Payment issued after deductible adjustment\n\n\nAnswer:",
-      "assistant_message": "If your car insurance claim exceeds the coverage limit, you will be responsible for paying the amount that goes over the policy coverage limit [source: Document 1].",
+      "user_message": "Based ONLY on the following context documents, answer the question: what is bobs premium\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if I miss a premium payment?,If a premium payment is missed, the policy may enter a grace period. If not paid within that period, the policy may become inactive.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Will my premium increase after a claim?,Yes, premiums may increase after claim history depending on risk assessment.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\n\nAnswer:",
+      "assistant_message": "Bob's premium is $1,100 annually [source].",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: how to file an insurance claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "To file an insurance claim, you can log into the customer portal or contact support, then submit required documents such as photos, reports, and incident details. The process involves notifying the insurer within 30 days, providing the policy number and incident description, and submitting supporting documents. The claim will then be reviewed, and you will receive a decision within 7\u201314 business days [sources: Document 1 and Document 2].",
+      "user_message": "Based ONLY on the following context documents, answer the question: can i file a claim for preexisting damages\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim for pre-existing damage?,No, pre-existing damages are not covered under the policy.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim after 30 days?,Claims reported after 30 days may be rejected unless there is a valid reason for delay and proper documentation is provided.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim if my policy is pending?,No, claims cannot be filed until the policy becomes active.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "Yes, you cannot file a claim for pre-existing damages, as they are not covered under the policy [source].",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: what documents are needed for claims\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is documentation mandatory for all claims?,Yes, supporting documents are required for claim verification and approval.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "The required documents for filing a claim include ID proof, policy number, incident details, photos, and supporting reports [sources: Document 1, Document 2, and Document 3]. Supporting documents are mandatory for claim verification and approval.",
+      "user_message": "Based ONLY on the following context documents, answer the question: what kinds of insurances are there\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim after 30 days?,Claims reported after 30 days may be rejected unless there is a valid reason for delay and proper documentation is provided.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:",
+      "assistant_message": "There are three kinds of insurance: Auto Insurance, Home Insurance, and Life Insurance [sources].",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: what types of insurance policies are available\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:",
-      "assistant_message": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each with different coverage plans [source: Document 1 and Document 3].",
+      "user_message": "Based ONLY on the following context documents, answer the question: hi, tell me more about life insurance\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3003.pdf\nContent: Policy Document 3 \u2014 Life Insurance  \nLIFE INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3003  \nPolicyholder Name: Alice Brown  \nPolicy Type: Life Insurance  \nPlan: Premium Life Cover  \nEffective Date: Mar 1, 2025  \nExpiry Date: Lifetime Coverage  \nPolicy Status: Inactive \n  \n1. Coverage Details  \nThis policy provides financial protection to the beneficiary in the event of the \npolicyholder\u2019s death.  \nBenefits:  \n\u2022 Lump sum payout to beneficiaries   \n\u2022 Coverage for natural and accidental death   \n\u2022 Optional riders for critical illness   \nCoverage Amount:  \nUp to $300,000  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Suicide within the first 2 years   \n\u2022 Death due to illegal activities   \n\u2022 Misrepresentation of health conditions\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:",
+      "assistant_message": "The life insurance policy offers financial protection to the beneficiary in case of the policyholder\u2019s death, including natural and accidental death. It provides a lump sum payout of up to $300,000 to beneficiaries, with optional riders for critical illness. The policy's effective date is March 1, 2025, and it has lifetime coverage, but it is currently inactive [sources].",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
-      "assistant_message": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide the policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, settlement will be made after deducting any applicable deductible [sources: Document 2 and Document 3].",
+      "user_message": "Based ONLY on the following context documents, answer the question: what the the coverage for John Doe\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: What if the damage exceeds my coverage limit?,You will be responsible for any amount exceeding the policy coverage limit.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2 [Source: policy_POL3001.pdf]:\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 3 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: Do all policies include liability coverage?,Most policies include liability coverage, but the extent varies by policy type.,Coverage\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "John Doe's auto insurance policy provides comprehensive coverage for his vehicle against various risks, including accidental collision, theft, fire, natural disasters, and vandalism. The coverage limit is up to $50,000 per incident, and there is liability coverage for bodily injury to third parties and property damage to third parties [source: policy_POL3001.pdf].",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
-      "assistant_message": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide your policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, payment will be issued after deducting any applicable deductible [sources: Document 2 and Document 3].",
+      "user_message": "Based ONLY on the following context documents, answer the question: what is Bob's policy premium\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: Will my premium increase after a claim?,Yes, premiums may increase after claim history depending on risk assessment.,Policy\nanswer: None\ncategory\": None\n\nDocument 2 [Source: insurance_data.json]:\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3 [Source: policy_POL3004.pdf]:\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\n\nAnswer:",
+      "assistant_message": "Bob's policy premium is $1,100 annually [source: policy_POL3004.pdf].",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: What should I do if my car is stolen?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if my claim is rejected?,You will receive a reason for rejection and may appeal or provide additional documentation.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "If your car is stolen, you should immediately notify the insurer, report the incident within 30 days, and submit the required documents such as a police report and photos. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be processed after deducting any applicable deductible [sources: Document 2].",
+      "user_message": "Based ONLY on the following context documents, answer the question: tell me about Bob's insurance coverage details\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: policy_POL3004.pdf]:\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 2 [Source: policy_POL3001.pdf]:\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 3 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\n\nAnswer:",
+      "assistant_message": "Bob's auto insurance coverage provides standard coverage against common risks, including accidental collision, fire, explosion, theft, natural disasters such as floods, storms, and hail. It includes liability coverage for injury to third parties and damage to third-party property, with a coverage limit of up to $40,000 per incident [source: policy_POL3004.pdf].",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     },
     {
-      "user_message": "Based on the following context documents, answer the question: will this affect my insurance premium\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Will my premium increase after a claim?,Yes, premiums may increase after claim history depending on risk assessment.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if I miss a premium payment?,If a premium payment is missed, the policy may enter a grace period. If not paid within that period, the policy may become inactive.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Yes, your insurance premium may increase after a claim, depending on the risk assessment [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: summarize policy for POL3001\n\nContext:\nDocument 1:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 2:\nSource: data\\policy_POL3003.pdf\nContent: Policy Document 3 \u2014 Life Insurance  \nLIFE INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3003  \nPolicyholder Name: Alice Brown  \nPolicy Type: Life Insurance  \nPlan: Premium Life Cover  \nEffective Date: Mar 1, 2025  \nExpiry Date: Lifetime Coverage  \nPolicy Status: Inactive \n  \n1. Coverage Details  \nThis policy provides financial protection to the beneficiary in the event of the \npolicyholder\u2019s death.  \nBenefits:  \n\u2022 Lump sum payout to beneficiaries   \n\u2022 Coverage for natural and accidental death   \n\u2022 Optional riders for critical illness   \nCoverage Amount:  \nUp to $300,000  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Suicide within the first 2 years   \n\u2022 Death due to illegal activities   \n\u2022 Misrepresentation of health conditions\n\nDocument 3:\nSource: data\\policy_POL3002.pdf\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\n\nAnswer:",
-      "assistant_message": "The policy for POL3001 is an auto insurance comprehensive plan that provides coverage against risks such as collision, theft, fire, natural disasters, and vandalism. It includes liability coverage for bodily injury and property damage to third parties, with a coverage limit of up to $50,000 per incident and a deductible of $500 per claim. The policy is active from January 1, 2025, to December 31, 2025 [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: help\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "You can check your policy status through the customer portal or by contacting support. If you need further assistance, reaching out to support is recommended [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: Hi\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Hello! How can I assist you today? If you need to check your policy status, you can do so through the customer portal or by contacting support.",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
-      "assistant_message": "To file a claim, you can log into the customer portal or contact support, then submit the required documents such as photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will then be reviewed, and you will be informed of the decision within 7\u201314 business days [sources: Document 1, Document 2, and Document 3].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: summarize the auto policy\n\nContext:\nDocument 1:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:",
-      "assistant_message": "The auto insurance policy for Bob Johnson (POL3004) is a standard auto coverage plan active from April 1, 2025, to March 31, 2026. It provides coverage for common risks such as accidental collision, fire, theft, and natural disasters, with liability coverage for injury to third parties and damage to third-party property. The coverage limit is up to $40,000 per incident, with an annual premium of $1,100 and a deductible (amount not specified in the provided excerpt).",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: onfig\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can claims be partially approved?,Yes, claims may be partially approved based on coverage and validation results.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Claims can be partially approved depending on coverage and validation results [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: config\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can claims be partially approved?,Yes, claims may be partially approved based on coverage and validation results.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\n\nAnswer:",
-      "assistant_message": "Yes, policies can be updated after purchase depending on the terms, which may require additional premium or approval [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim after 30 days?,Claims reported after 30 days may be rejected unless there is a valid reason for delay and proper documentation is provided.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim if my policy is inactive?,No, claims can only be filed if the policy is active and premiums are up to date.,Claims\nanswer: None\ncategory\": None\n\nDocument 4:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 5:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
-      "assistant_message": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, your policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed, and you will receive a decision within 7\u201314 business days [sources: Document 1, Document 4, and Document 5].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: config\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can claims be partially approved?,Yes, claims may be partially approved based on coverage and validation results.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\n\nAnswer:",
-      "assistant_message": "Yes, policies can be updated after purchase depending on the terms, which may require additional premium or approval [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: summarize document 1\n\nContext:\nDocument 1:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 2:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is documentation mandatory for all claims?,Yes, supporting documents are required for claim verification and approval.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Document 1 provides details about an auto insurance policy (POL3001) for John Doe, under the Comprehensive Plus plan. It offers coverage against a wide range of risks, including accidents, theft, fire, natural disasters, and vandalism. Liability coverage includes bodily injury and property damage to third parties, with a limit of up to $50,000 per incident and a deductible of $500. The policy is active from January 1, 2025, to December 31, 2025 [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
-      "assistant_message": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, your policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed, and you will be informed of approval or rejection within 7\u201314 business days, and if approved, payment will be processed accordingly [sources: Document 1, Document 2, and Document 3].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: What types of insurance are available?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "The available insurance types are Auto Insurance, Home Insurance, and Life Insurance, each with different coverage plans [sources: Document 1 and Document 2].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: help\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "You can check your policy status through the customer portal or by contacting support. If you need further assistance, support can help you.",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: summarize the home in surance policy\n\nContext:\nDocument 1:\nSource: data\\policy_POL3002.pdf\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\nDocument 2:\nSource: data\\policy_POL3005.pdf\nContent: Policy Document 5 \u2014 Home Insurance \nHOME INSURANCE POLICY DOCUMENT \nPolicy Number: POL3005 \nPolicyholder Name: Charlie Davis \nPolicy Type: Home Insurance \nPlan: Basic Home Protect \nEffective Date: May 1, 2025 \nExpiry Date: Apr 30, 2026 \nPolicy Status: Pending \n \n1. Coverage Details \nThis policy provides basic protection for residential property and selected risks. \nCovered Events: \n\u2022 Fire and smoke damage  \n\u2022 Theft and burglary  \n\u2022 Limited natural disaster coverage  \nProperty Coverage: \n\u2022 Structural damage (limited)  \n\u2022 Essential household items  \nCoverage Limit: \nUp to $120,000 for structure \nUp to $25,000 for personal belongings \nPremium: \n$1,700 annually \nDeductible: \n$1,500 per claim\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:",
-      "assistant_message": "The home insurance policy for Jane Smith (POL3002) provides protection for her residential property and personal belongings against risks such as fire, theft, natural disasters, and water damage (excluding negligence). It covers structural damage up to $200,000 and personal belongings up to $50,000. The policy is active from February 1, 2025, to January 31, 2026 [source: Document 1].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: hi how are you\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Hello! I'm here to assist you. How can I help today?",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: Hello\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Hello! How can I assist you today? If you want to check your policy status, you can do so through the customer portal or by contacting support.",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Hello",
-      "assistant_message": "Hello! How can I help you today?",
-      "prompt_template": "chatbot_personality",
-      "prompt_file": "chatbot_personality.txt"
-    },
-    {
-      "user_message": "List 3 programming languages as JSON",
-      "assistant_message": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}",
-      "prompt_template": "json_extractor",
-      "prompt_file": "json_extractor.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
-      "assistant_message": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "Hi there",
-      "assistant_message": "Hello! How can I assist you today?",
-      "prompt_template": "chatbot_personality",
-      "prompt_file": "chatbot_personality.txt"
-    },
-    {
-      "user_message": "Write a Python function to calculate insurance premium",
-      "assistant_message": "Certainly! Here's a simple Python function to calculate an insurance premium based on user inputs such as age, coverage amount, and risk factor. This example can be expanded based on specific business logic.\n\n```python\ndef calculate_premium(age, coverage_amount, risk_factor):\n    \"\"\"\n    Calculate insurance premium based on age, coverage amount, and risk factor.\n\n    Args:\n        age (int): The age of the applicant.\n        coverage_amount (float): The desired coverage amount.\n        risk_factor (float): A multiplier based on risk (e.g., 1.0 for normal risk, higher for high risk).\n\n    Returns:\n        float: The calculated premium.\n    \"\"\"\n\n    # Base premium could be a fixed amount or calculated based on coverage\n    base_premium = coverage_amount * 0.01  # Example: 1% of coverage as base premium\n\n    # Adjust premium based on age\n    if age < 25:\n        age_multiplier = 1.2  # Higher premium for young applicants\n    elif age > 60:\n        age_multiplier = 1.3  # Higher premium for older applicants\n    else:\n        age_multiplier = 1.0\n\n    # Final premium calculation\n    premium = base_premium * age_multiplier * risk_factor\n\n    return round(premium, 2)\n\n# Example usage:\npremium = calculate_premium(30, 100000, 1.0)\nprint(f\"The calculated premium is: ${premium}\")\n```\n\nFeel free to customize the factors and logic to match your specific requirements!",
-      "prompt_template": "code_generator",
-      "prompt_file": "code_generator.txt"
-    },
-    {
-      "user_message": "hello",
-      "assistant_message": "Hello! How can I assist you today?",
-      "prompt_template": "chatbot_personality",
-      "prompt_file": "chatbot_personality.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: hi how are you today\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How long does it take to process a claim?,Claims are typically processed within 7-14 business days after verification.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:",
-      "assistant_message": "Hello! I don\u2019t have feelings, but I\u2019m here to help. How can I assist you today?",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "hi how are you today",
-      "assistant_message": "Hello! I'm here and ready to assist you. How can I help today?",
-      "prompt_template": "chatbot_personality",
-      "prompt_file": "chatbot_personality.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: how do I file a claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:",
-      "assistant_message": "To file a claim, log into the customer portal or contact support. Submit the required documents, including photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3].",
-      "prompt_template": "rag",
-      "prompt_file": "rag_prompt.txt"
-    },
-    {
-      "user_message": "hello there",
-      "assistant_message": "Hello! How can I assist you today?",
-      "prompt_template": "chatbot_personality",
-      "prompt_file": "chatbot_personality.txt"
-    },
-    {
-      "user_message": "Based on the following context documents, answer the question: tell me about insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:",
-      "assistant_message": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each offering different coverage plans. Auto insurance covers accidents, theft, fire, natural disasters, and includes liability coverage. Home insurance protects property and personal belongings against risks like fire, theft, and natural disasters, with liability for injuries on the property. Life insurance provides financial support to beneficiaries, covering natural and accidental death [sources: Document 1 and Document 2].",
+      "user_message": "Based ONLY on the following context documents, answer the question: what is the weather today\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: Is flood damage always covered under home insurance?,Flood damage is typically not covered unless an additional rider or coverage is purchased.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2 [Source: policy_POL3002.pdf]:\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\nDocument 3 [Source: policy_POL3004.pdf]:\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\n\nAnswer:",
+      "assistant_message": "I don't have enough information in the available documents to answer this question.",
       "prompt_template": "rag",
       "prompt_file": "rag_prompt.txt"
     }
@@ -249,7 +93,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "what can you do"
+          "text": "Based ONLY on the following context documents, answer the question: what is the capital of France\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is flood damage always covered under home insurance?,Flood damage is typically not covered unless an additional rider or coverage is purchased.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What is a deductible?,A deductible is the amount you must pay before the insurer covers the remaining claim amount.,General\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if I miss a premium payment?,If a premium payment is missed, the policy may enter a grace period. If not paid within that period, the policy may become inactive.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
         }
       ]
     },
@@ -259,7 +103,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "I can help you with many things! I can answer questions, tell stories, explain tricky ideas, and help you learn new stuff. I can also help write stories, poems, or even thank-you notes. If you have a homework problem or want to know about animals, science, or history, just ask!"
+          "text": "I don't have enough information in the available documents to answer this question."
         }
       ]
     },
@@ -269,7 +113,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "List 3 programming languages as JSON"
+          "text": "thank you for your help"
         }
       ]
     },
@@ -279,7 +123,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}"
+          "text": "You're welcome! If you have more questions, feel free to ask. Have a great day!"
         }
       ]
     },
@@ -289,7 +133,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Hello, can you respond?"
+          "text": "Based ONLY on the following context documents, answer the question: hello, can you tell me about Bob's insurance coverage\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:"
         }
       ]
     },
@@ -299,7 +143,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "Hello! Yes, I can respond. How can I help you today?"
+          "text": "Bob's insurance coverage is an auto insurance policy with the policy number POL3004, effective from April 1, 2025, to March 31, 2026. It provides standard coverage for his vehicle against common risks, including accidental collision, fire, explosion, theft, and natural disasters like storms and floods. The policy includes liability coverage for injury to third parties and damage to third-party property, with a coverage limit of up to $40,000 per incident. The annual premium is $1,100 [source]."
         }
       ]
     },
@@ -309,7 +153,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:"
+          "text": "hello. what can you do"
         }
       ]
     },
@@ -319,7 +163,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "Yes, it is possible to have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1]."
+          "text": "Hello! I can answer questions based on the documents you provide. I help explain information, find details, or summarize what\u2019s in the data. Just ask me anything from the given context, and I\u2019ll do my best to help!"
         }
       ]
     },
@@ -329,7 +173,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: can I have multiple insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: who was alan turing\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3003.pdf\nContent: Policy Document 3 \u2014 Life Insurance  \nLIFE INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3003  \nPolicyholder Name: Alice Brown  \nPolicy Type: Life Insurance  \nPlan: Premium Life Cover  \nEffective Date: Mar 1, 2025  \nExpiry Date: Lifetime Coverage  \nPolicy Status: Inactive \n  \n1. Coverage Details  \nThis policy provides financial protection to the beneficiary in the event of the \npolicyholder\u2019s death.  \nBenefits:  \n\u2022 Lump sum payout to beneficiaries   \n\u2022 Coverage for natural and accidental death   \n\u2022 Optional riders for critical illness   \nCoverage Amount:  \nUp to $300,000  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Suicide within the first 2 years   \n\u2022 Death due to illegal activities   \n\u2022 Misrepresentation of health conditions\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Will my claim be approved automatically?,No, all claims go through a verification process before approval.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
         }
       ]
     },
@@ -339,7 +183,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "Yes, you can have multiple insurance policies. However, claims cannot be made for the same loss across multiple policies [source: Document 1]."
+          "text": "I don't have enough information in the available documents to answer this question."
         }
       ]
     },
@@ -349,7 +193,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: what happens if my car insurance claim is over the coverage limit\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if the damage exceeds my coverage limit?,You will be responsible for any amount exceeding the policy coverage limit.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: Up to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Intentional or fraudulent damage   \n\u2022 Driving under the influence of alcohol or drugs\n\nDocument 3:\nSource: data\\policy_POL3004.pdf\nContent: $750 per claim \n \n2. Exclusions \nThis policy does not cover: \n\u2022 Driving under the influence  \n\u2022 Intentional damage  \n\u2022 Mechanical breakdowns  \n\u2022 Normal wear and tear  \n\u2022 Unauthorized use of the vehicle  \n \n3. Terms and Conditions \n\u2022 Incidents must be reported within 30 days  \n\u2022 Policyholder must provide accurate information  \n\u2022 Premium payments must be maintained for coverage validity  \n\u2022 Claims are subject to verification and approval  \n \n4. Claims Process \n1. Notify insurer immediately after incident  \n2. Submit supporting documents (photos, reports)  \n3. Claims reviewed within 7\u201310 business days  \n4. Payment issued after deductible adjustment\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: tell me 3 programming languages\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\policy_POL3003.pdf\nContent: 3. Terms and Conditions  \n\u2022 Premiums must be paid regularly   \n\u2022 Accurate disclosure of health history is required   \n\u2022 Beneficiaries must provide valid documentation for claims   \n  \n4. Claims Process  \n\u2022 Beneficiary submits claim request   \n\u2022 Provide death certificate and policy documents   \n\u2022 Claim processed within 15 business days\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\n\nAnswer:"
         }
       ]
     },
@@ -359,7 +203,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "If your car insurance claim exceeds the coverage limit, you will be responsible for paying the amount that goes over the policy coverage limit [source: Document 1]."
+          "text": "I don't have enough information in the available documents to answer this question."
         }
       ]
     },
@@ -369,7 +213,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: how to file an insurance claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: what is bobs premium\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if I miss a premium payment?,If a premium payment is missed, the policy may enter a grace period. If not paid within that period, the policy may become inactive.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Will my premium increase after a claim?,Yes, premiums may increase after claim history depending on risk assessment.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\n\nAnswer:"
         }
       ]
     },
@@ -379,7 +223,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "To file an insurance claim, you can log into the customer portal or contact support, then submit required documents such as photos, reports, and incident details. The process involves notifying the insurer within 30 days, providing the policy number and incident description, and submitting supporting documents. The claim will then be reviewed, and you will receive a decision within 7\u201314 business days [sources: Document 1 and Document 2]."
+          "text": "Bob's premium is $1,100 annually [source]."
         }
       ]
     },
@@ -389,7 +233,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: what documents are needed for claims\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is documentation mandatory for all claims?,Yes, supporting documents are required for claim verification and approval.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: can i file a claim for preexisting damages\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim for pre-existing damage?,No, pre-existing damages are not covered under the policy.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim after 30 days?,Claims reported after 30 days may be rejected unless there is a valid reason for delay and proper documentation is provided.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim if my policy is pending?,No, claims cannot be filed until the policy becomes active.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
         }
       ]
     },
@@ -399,7 +243,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "The required documents for filing a claim include ID proof, policy number, incident details, photos, and supporting reports [sources: Document 1, Document 2, and Document 3]. Supporting documents are mandatory for claim verification and approval."
+          "text": "Yes, you cannot file a claim for pre-existing damages, as they are not covered under the policy [source]."
         }
       ]
     },
@@ -409,7 +253,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: what types of insurance policies are available\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: what kinds of insurances are there\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim after 30 days?,Claims reported after 30 days may be rejected unless there is a valid reason for delay and proper documentation is provided.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:"
         }
       ]
     },
@@ -419,7 +263,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each with different coverage plans [source: Document 1 and Document 3]."
+          "text": "There are three kinds of insurance: Auto Insurance, Home Insurance, and Life Insurance [sources]."
         }
       ]
     },
@@ -429,7 +273,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: hi, tell me more about life insurance\n\nIMPORTANT: Only use information from the provided context. If the context doesn't contain the information needed to answer the question, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3003.pdf\nContent: Policy Document 3 \u2014 Life Insurance  \nLIFE INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3003  \nPolicyholder Name: Alice Brown  \nPolicy Type: Life Insurance  \nPlan: Premium Life Cover  \nEffective Date: Mar 1, 2025  \nExpiry Date: Lifetime Coverage  \nPolicy Status: Inactive \n  \n1. Coverage Details  \nThis policy provides financial protection to the beneficiary in the event of the \npolicyholder\u2019s death.  \nBenefits:  \n\u2022 Lump sum payout to beneficiaries   \n\u2022 Coverage for natural and accidental death   \n\u2022 Optional riders for critical illness   \nCoverage Amount:  \nUp to $300,000  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Suicide within the first 2 years   \n\u2022 Death due to illegal activities   \n\u2022 Misrepresentation of health conditions\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:"
         }
       ]
     },
@@ -439,7 +283,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide the policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, settlement will be made after deducting any applicable deductible [sources: Document 2 and Document 3]."
+          "text": "The life insurance policy offers financial protection to the beneficiary in case of the policyholder\u2019s death, including natural and accidental death. It provides a lump sum payout of up to $300,000 to beneficiaries, with optional riders for critical illness. The policy's effective date is March 1, 2025, and it has lifetime coverage, but it is currently inactive [sources]."
         }
       ]
     },
@@ -449,7 +293,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: what should I do if my car is stolen and I have insurance\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: what the the coverage for John Doe\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: What if the damage exceeds my coverage limit?,You will be responsible for any amount exceeding the policy coverage limit.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2 [Source: policy_POL3001.pdf]:\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 3 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: Do all policies include liability coverage?,Most policies include liability coverage, but the extent varies by policy type.,Coverage\nanswer: None\ncategory\": None\n\n\nAnswer:"
         }
       ]
     },
@@ -459,7 +303,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "If your car is stolen and you have insurance, you should immediately notify the insurer, provide your policy number, a description of the incident, and supporting documents such as a police report and photos. The claim will then be reviewed within 7\u201314 business days, and if approved, payment will be issued after deducting any applicable deductible [sources: Document 2 and Document 3]."
+          "text": "John Doe's auto insurance policy provides comprehensive coverage for his vehicle against various risks, including accidental collision, theft, fire, natural disasters, and vandalism. The coverage limit is up to $50,000 per incident, and there is liability coverage for bodily injury to third parties and property damage to third parties [source: policy_POL3001.pdf]."
         }
       ]
     },
@@ -469,7 +313,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: What should I do if my car is stolen?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is theft covered if I left my car unlocked?,Claims may be denied if negligence, such as leaving the car unlocked, is proven.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: \u2022 Mechanical or electrical breakdown   \n\u2022 Normal wear and tear   \n\u2022 Use of vehicle for illegal activities   \n\u2022 Damage caused due to negligence   \n  \n3. Terms and Conditions  \n\u2022 The policyholder must report any incident within 30 days of occurrence.   \n\u2022 All information provided must be accurate and truthful.   \n\u2022 Premium payments must be made on time to keep the policy active.   \n\u2022 The insurer reserves the right to inspect the vehicle and verify claims.   \n  \n4. Claims Process  \n1. Notify the insurer immediately after the incident   \n2. Submit required documents (photos, police report if applicable)   \n3. Claims will be reviewed within 7\u201314 business days   \n4. Approved claims will be settled after deductible adjustment\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if my claim is rejected?,You will receive a reason for rejection and may appeal or provide additional documentation.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: what is Bob's policy premium\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: Will my premium increase after a claim?,Yes, premiums may increase after claim history depending on risk assessment.,Policy\nanswer: None\ncategory\": None\n\nDocument 2 [Source: insurance_data.json]:\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3 [Source: policy_POL3004.pdf]:\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\n\nAnswer:"
         }
       ]
     },
@@ -479,7 +323,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "If your car is stolen, you should immediately notify the insurer, report the incident within 30 days, and submit the required documents such as a police report and photos. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be processed after deducting any applicable deductible [sources: Document 2]."
+          "text": "Bob's policy premium is $1,100 annually [source: policy_POL3004.pdf]."
         }
       ]
     },
@@ -489,7 +333,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: will this affect my insurance premium\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Will my premium increase after a claim?,Yes, premiums may increase after claim history depending on risk assessment.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What happens if I miss a premium payment?,If a premium payment is missed, the policy may enter a grace period. If not paid within that period, the policy may become inactive.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: tell me about Bob's insurance coverage details\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: policy_POL3004.pdf]:\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 2 [Source: policy_POL3001.pdf]:\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 3 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\n\nAnswer:"
         }
       ]
     },
@@ -499,7 +343,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "Yes, your insurance premium may increase after a claim, depending on the risk assessment [source: Document 1]."
+          "text": "Bob's auto insurance coverage provides standard coverage against common risks, including accidental collision, fire, explosion, theft, natural disasters such as floods, storms, and hail. It includes liability coverage for injury to third parties and damage to third-party property, with a coverage limit of up to $40,000 per incident [source: policy_POL3004.pdf]."
         }
       ]
     },
@@ -509,7 +353,7 @@
       "content": [
         {
           "type": "input_text",
-          "text": "Based on the following context documents, answer the question: summarize policy for POL3001\n\nContext:\nDocument 1:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 2:\nSource: data\\policy_POL3003.pdf\nContent: Policy Document 3 \u2014 Life Insurance  \nLIFE INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3003  \nPolicyholder Name: Alice Brown  \nPolicy Type: Life Insurance  \nPlan: Premium Life Cover  \nEffective Date: Mar 1, 2025  \nExpiry Date: Lifetime Coverage  \nPolicy Status: Inactive \n  \n1. Coverage Details  \nThis policy provides financial protection to the beneficiary in the event of the \npolicyholder\u2019s death.  \nBenefits:  \n\u2022 Lump sum payout to beneficiaries   \n\u2022 Coverage for natural and accidental death   \n\u2022 Optional riders for critical illness   \nCoverage Amount:  \nUp to $300,000  \n  \n2. Exclusions  \nThis policy does not cover:  \n\u2022 Suicide within the first 2 years   \n\u2022 Death due to illegal activities   \n\u2022 Misrepresentation of health conditions\n\nDocument 3:\nSource: data\\policy_POL3002.pdf\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\n\nAnswer:"
+          "text": "Based ONLY on the following context documents, answer the question: what is the weather today\n\nIMPORTANT: \n1. Only use information from the provided context documents\n2. When you reference information, cite the specific document by including the source filename in square brackets [filename]\n3. If multiple documents contribute to your answer, cite each relevant source\n4. If the context doesn't contain the information needed, say \"I don't have enough information in the available documents to answer this question.\"\n\nContext:\nDocument 1 [Source: Insurance FAQ Dataset.csv]:\nContent: \ufeff\"question: Is flood damage always covered under home insurance?,Flood damage is typically not covered unless an additional rider or coverage is purchased.,Coverage\nanswer: None\ncategory\": None\n\nDocument 2 [Source: policy_POL3002.pdf]:\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\nDocument 3 [Source: policy_POL3004.pdf]:\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\n\nAnswer:"
         }
       ]
     },
@@ -519,527 +363,7 @@
       "content": [
         {
           "type": "output_text",
-          "text": "The policy for POL3001 is an auto insurance comprehensive plan that provides coverage against risks such as collision, theft, fire, natural disasters, and vandalism. It includes liability coverage for bodily injury and property damage to third parties, with a coverage limit of up to $50,000 per incident and a deductible of $500 per claim. The policy is active from January 1, 2025, to December 31, 2025 [source: Document 1]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: help\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "You can check your policy status through the customer portal or by contacting support. If you need further assistance, reaching out to support is recommended [source: Document 1]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: Hi\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! How can I assist you today? If you need to check your policy status, you can do so through the customer portal or by contacting support."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "To file a claim, you can log into the customer portal or contact support, then submit the required documents such as photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will then be reviewed, and you will be informed of the decision within 7\u201314 business days [sources: Document 1, Document 2, and Document 3]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: summarize the auto policy\n\nContext:\nDocument 1:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 2:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "The auto insurance policy for Bob Johnson (POL3004) is a standard auto coverage plan active from April 1, 2025, to March 31, 2026. It provides coverage for common risks such as accidental collision, fire, theft, and natural disasters, with liability coverage for injury to third parties and damage to third-party property. The coverage limit is up to $40,000 per incident, with an annual premium of $1,100 and a deductible (amount not specified in the provided excerpt)."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: onfig\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can claims be partially approved?,Yes, claims may be partially approved based on coverage and validation results.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Claims can be partially approved depending on coverage and validation results [source: Document 1]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: config\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can claims be partially approved?,Yes, claims may be partially approved based on coverage and validation results.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Yes, policies can be updated after purchase depending on the terms, which may require additional premium or approval [source: Document 1]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim after 30 days?,Claims reported after 30 days may be rejected unless there is a valid reason for delay and proper documentation is provided.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I file a claim if my policy is inactive?,No, claims can only be filed if the policy is active and premiums are up to date.,Claims\nanswer: None\ncategory\": None\n\nDocument 4:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 5:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, your policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed, and you will receive a decision within 7\u201314 business days [sources: Document 1, Document 4, and Document 5]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: config\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can claims be partially approved?,Yes, claims may be partially approved based on coverage and validation results.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Yes, policies can be updated after purchase depending on the terms, which may require additional premium or approval [source: Document 1]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: summarize document 1\n\nContext:\nDocument 1:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\nDocument 2:\nSource: data\\policy_POL3004.pdf\nContent: Policy Document 4 \u2014 Auto Insurance \nAUTO INSURANCE POLICY DOCUMENT \nPolicy Number: POL3004 \nPolicyholder Name: Bob Johnson \nPolicy Type: Auto Insurance \nPlan: Standard Auto Cover \nEffective Date: Apr 1, 2025 \nExpiry Date: Mar 31, 2026 \nPolicy Status: Active \n \n1. Coverage Details \nThis policy provides standard coverage for the insured vehicle against common risks, \nsubject to policy terms. \nCovered Events: \n\u2022 Accidental collision  \n\u2022 Fire and explosion  \n\u2022 Theft or attempted theft  \n\u2022 Natural disasters (storms, floods, hail)  \nLiability Coverage: \n\u2022 Injury to third parties  \n\u2022 Damage to third-party property  \nCoverage Limit: \nUp to $40,000 per incident \nPremium: \n$1,100 annually \nDeductible:\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Is documentation mandatory for all claims?,Yes, supporting documents are required for claim verification and approval.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Document 1 provides details about an auto insurance policy (POL3001) for John Doe, under the Comprehensive Plus plan. It offers coverage against a wide range of risks, including accidents, theft, fire, natural disasters, and vandalism. Liability coverage includes bodily injury and property damage to third parties, with a limit of up to $50,000 per incident and a deductible of $500. The policy is active from January 1, 2025, to December 31, 2025 [source: Document 1]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, your policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed, and you will be informed of approval or rejection within 7\u201314 business days, and if approved, payment will be processed accordingly [sources: Document 1, Document 2, and Document 3]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: What types of insurance are available?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I have multiple insurance policies?,Yes, but claims cannot be made for the same loss across multiple policies.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "The available insurance types are Auto Insurance, Home Insurance, and Life Insurance, each with different coverage plans [sources: Document 1 and Document 2]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: help\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What if incorrect information was provided during purchase?,Providing incorrect information may lead to claim rejection or policy cancellation.,Compliance\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "You can check your policy status through the customer portal or by contacting support. If you need further assistance, support can help you."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: summarize the home in surance policy\n\nContext:\nDocument 1:\nSource: data\\policy_POL3002.pdf\nContent: Policy Document 2 \u2014 Home Insurance  \nHOME INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3002  \nPolicyholder Name: Jane Smith  \nPolicy Type: Home Insurance  \nPlan: Standard Protect  \nEffective Date: Feb 1, 2025  \nExpiry Date: Jan 31, 2026  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides protection for residential property and personal belongings against \nspecified risks.  \nCovered Events:  \n\u2022 Fire and smoke damage   \n\u2022 Theft and burglary   \n\u2022 Natural disasters (storms, floods, earthquakes)   \n\u2022 Water damage (excluding negligence)   \nProperty Coverage:  \n\u2022 Structural damage to the house   \n\u2022 Personal belongings inside the home   \nLiability Coverage:  \n\u2022 Injuries occurring on the insured property   \nCoverage Limit:  \nUp to $200,000 for structural damage and $50,000 for personal belongings.\n\nDocument 2:\nSource: data\\policy_POL3005.pdf\nContent: Policy Document 5 \u2014 Home Insurance \nHOME INSURANCE POLICY DOCUMENT \nPolicy Number: POL3005 \nPolicyholder Name: Charlie Davis \nPolicy Type: Home Insurance \nPlan: Basic Home Protect \nEffective Date: May 1, 2025 \nExpiry Date: Apr 30, 2026 \nPolicy Status: Pending \n \n1. Coverage Details \nThis policy provides basic protection for residential property and selected risks. \nCovered Events: \n\u2022 Fire and smoke damage  \n\u2022 Theft and burglary  \n\u2022 Limited natural disaster coverage  \nProperty Coverage: \n\u2022 Structural damage (limited)  \n\u2022 Essential household items  \nCoverage Limit: \nUp to $120,000 for structure \nUp to $25,000 for personal belongings \nPremium: \n$1,700 annually \nDeductible: \n$1,500 per claim\n\nDocument 3:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "The home insurance policy for Jane Smith (POL3002) provides protection for her residential property and personal belongings against risks such as fire, theft, natural disasters, and water damage (excluding negligence). It covers structural damage up to $200,000 and personal belongings up to $50,000. The policy is active from February 1, 2025, to January 31, 2026 [source: Document 1]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: hi how are you\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I update my policy after purchasing it?,Yes, policy updates are allowed depending on the terms and may require additional premium or approval.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! I'm here to assist you. How can I help today?"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: Hello\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\insurance_data.json\nContent: [\n    {\n        \"customer_id\": 1,\n        \"name\": \"John Doe\",\n        \"policy_id\": \"POL3001\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1200,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 2,\n        \"name\": \"Jane Smith\",\n        \"policy_id\": \"POL3002\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1500,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 3,\n        \"name\": \"Alice Brown\",\n        \"policy_id\": \"POL3003\",\n        \"policy_type\": \"Life\",\n        \"premium\": 2000,\n        \"status\": \"Inactive\"\n    },\n    {\n        \"customer_id\": 4,\n        \"name\": \"Bob Johnson\",\n        \"policy_id\": \"POL3004\",\n        \"policy_type\": \"Auto\",\n        \"premium\": 1100,\n        \"status\": \"Active\"\n    },\n    {\n        \"customer_id\": 5,\n        \"name\": \"Charlie Davis\",\n        \"policy_id\": \"POL3005\",\n        \"policy_type\": \"Home\",\n        \"premium\": 1700,\n        \"status\": \"Pending\"\n    }\n]\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: Can I transfer my policy to another person?,Policies are generally non-transferable unless explicitly allowed under specific conditions.,Policy\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! How can I assist you today? If you want to check your policy status, you can do so through the customer portal or by contacting support."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Hello"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! How can I help you today?"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "List 3 programming languages as JSON"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "{\n  \"languages\": [\n    \"Python\",\n    \"JavaScript\",\n    \"Java\"\n  ]\n}"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: How do I file a claim?\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "To file a claim, log into the customer portal or contact support. Submit the required documents, such as photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Hi there"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! How can I assist you today?"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Write a Python function to calculate insurance premium"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Certainly! Here's a simple Python function to calculate an insurance premium based on user inputs such as age, coverage amount, and risk factor. This example can be expanded based on specific business logic.\n\n```python\ndef calculate_premium(age, coverage_amount, risk_factor):\n    \"\"\"\n    Calculate insurance premium based on age, coverage amount, and risk factor.\n\n    Args:\n        age (int): The age of the applicant.\n        coverage_amount (float): The desired coverage amount.\n        risk_factor (float): A multiplier based on risk (e.g., 1.0 for normal risk, higher for high risk).\n\n    Returns:\n        float: The calculated premium.\n    \"\"\"\n\n    # Base premium could be a fixed amount or calculated based on coverage\n    base_premium = coverage_amount * 0.01  # Example: 1% of coverage as base premium\n\n    # Adjust premium based on age\n    if age < 25:\n        age_multiplier = 1.2  # Higher premium for young applicants\n    elif age > 60:\n        age_multiplier = 1.3  # Higher premium for older applicants\n    else:\n        age_multiplier = 1.0\n\n    # Final premium calculation\n    premium = base_premium * age_multiplier * risk_factor\n\n    return round(premium, 2)\n\n# Example usage:\npremium = calculate_premium(30, 100000, 1.0)\nprint(f\"The calculated premium is: ${premium}\")\n```\n\nFeel free to customize the factors and logic to match your specific requirements!"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "hello"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! How can I assist you today?"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: hi how are you today\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How can I check my policy status?,You can check your policy status through the customer portal or by contacting support.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How long does it take to process a claim?,Claims are typically processed within 7-14 business days after verification.,Claims\nanswer: None\ncategory\": None\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! I don\u2019t have feelings, but I\u2019m here to help. How can I assist you today?"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "hi how are you today"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! I'm here and ready to assist you. How can I help today?"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: how do I file a claim\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: How do I file a claim?,You can file a claim by logging into the customer portal or contacting support. Submit required documents such as photos and reports. Claims are processed within 7-14 business days.,Claims\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What documents are required for filing a claim?,Required documents include ID proof, policy number, incident details, photos and supporting reports.,Claims\nanswer: None\ncategory\": None\n\nDocument 3:\nSource: data\\Claims Process Document.docx\nContent: INSURANCE CLAIMS PROCESS GUIDE \n\nStep 1: Report the Incident \n\nNotify the insurance provider within 30 days of the incident. \n\nStep 2: Submit Claim Provide: \n\nPolicy number\n\nDescription of incident\n\nSupporting documents (photos, receipts, reports)  Step 3: Claim Review The insurer verifies:\n\nPolicy coverage\n\nValidity of claim\n\nSupporting documents\n\nStep 4: Approval / Rejection \n\nApproved \u2192 Payment issued\n\nRejected \u2192 Reason provided\n\nProcessing Time \n\nTypically 7\u201314 business days\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "To file a claim, log into the customer portal or contact support. Submit the required documents, including photos, reports, ID proof, policy number, and incident details. Notify the insurer within 30 days of the incident. The claim will be reviewed within 7\u201314 business days, and if approved, payment will be issued after verification [sources: Document 1, Document 2, and Document 3]."
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "hello there"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "Hello! How can I assist you today?"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "user",
-      "content": [
-        {
-          "type": "input_text",
-          "text": "Based on the following context documents, answer the question: tell me about insurance policies\n\nContext:\nDocument 1:\nSource: data\\Insurance FAQ Dataset.csv\nContent: \ufeff\"question: What types of insurance policies are available?,We offer Auto Insurance, Home Insurance and Life Insurance with different coverage plans.,General\nanswer: None\ncategory\": None\n\nDocument 2:\nSource: data\\Insurance Product Catalog.pdf\nContent: Insurance Product Catalog (Convert to PDF or JSON) \nINSURANCE PRODUCTS OVERVIEW \n1. Auto Insurance \n\u2022 Covers accidents, theft, fire and natural disasters  \n\u2022 Includes liability coverage  \n2. Home Insurance \n\u2022 Covers property damage and personal belongings  \n\u2022 Includes liability for injuries on property  \n3. Life Insurance \n\u2022 Provides financial support to beneficiaries  \n\u2022 Covers natural and accidental death\n\nDocument 3:\nSource: data\\policy_POL3001.pdf\nContent: Policy Document 1 \u2014 Auto Insurance (Comprehensive Plan)  \nAUTO INSURANCE POLICY DOCUMENT  \nPolicy Number: POL3001  \nPolicyholder Name: John Doe  \nPolicy Type: Auto Insurance  \nPlan: Comprehensive Plus  \nEffective Date: Jan 1, 2025  \nExpiry Date: Dec 31, 2025  \nPolicy Status: Active \n  \n1. Coverage Details  \nThis policy provides comprehensive coverage for the insured vehicle against a wide range of \nrisks, subject to the terms and conditions outlined in this document.  \nCovered Events:  \n\u2022 Accidental collision and overturning   \n\u2022 Theft or attempted theft   \n\u2022 Fire, explosion or self-ignition   \n\u2022 Natural disasters including floods, storms, earthquakes and hail   \n\u2022 Vandalism and malicious damage  Liability Coverage:  \n\u2022 Bodily injury to third parties   \n\u2022 Property damage caused to third parties  Coverage Limit:  \nUp to $50,000 per incident, depending on claim type and validation.  \nDeductible:  \nA deductible of $500 applies to each approved claim.  \n  \n2. Exclusions\n\n\nAnswer:"
-        }
-      ]
-    },
-    {
-      "type": "message",
-      "role": "assistant",
-      "content": [
-        {
-          "type": "output_text",
-          "text": "The available insurance policies include Auto Insurance, Home Insurance, and Life Insurance, each offering different coverage plans. Auto insurance covers accidents, theft, fire, natural disasters, and includes liability coverage. Home insurance protects property and personal belongings against risks like fire, theft, and natural disasters, with liability for injuries on the property. Life insurance provides financial support to beneficiaries, covering natural and accidental death [sources: Document 1 and Document 2]."
+          "text": "I don't have enough information in the available documents to answer this question."
         }
       ]
     }
